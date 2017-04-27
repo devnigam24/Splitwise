@@ -1,0 +1,8 @@
+git clone https://github.com/devnigam24/Splitwise.git
+cd Splitwise
+npm install -g ember-cli@2.12
+ember new splitwise-app
+cd splitwise-app
+ember server
+
+ember generate template application
