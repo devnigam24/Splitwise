@@ -1,3 +1,20 @@
-<h1>My Expenses1</h1>
-
-{{outlet}}
+<div class="container">
+  <div class="menu">
+    {{#link-to 'signupLoginRoute'}}
+      <h1>
+        <em>Splitwise</em>
+      </h1>
+    {{/link-to}}
+    <div class="links">
+      {{#link-to 'signupLoginRoute'}}
+        About
+      {{/link-to}}
+      {{#link-to 'signupLoginRoute'}}
+        Contact
+      {{/link-to}}
+    </div>
+  </div>
+  <div class="body">
+    {{outlet}}
+  </div>
+</div>
