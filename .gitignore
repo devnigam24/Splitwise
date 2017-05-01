@@ -3,8 +3,8 @@ Thumbs.db
 ehthumbs.db
 
 # Folder config file
-Desktop.ini
 node_modules
+Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/

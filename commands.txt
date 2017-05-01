@@ -6,3 +6,4 @@ cd splitwise-app
 ember server
 
 ember generate template application
+ember generate route signupLoginRoute
