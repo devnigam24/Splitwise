@@ -1,0 +1,76 @@
+<div id="modal1" class="modal">
+  <div class="modal-content2">
+    <div class="col s12">
+      <ul class="tabs tabs-fixed-width z-depth-2">
+        <li class="tab col s6"><a href="#test1" class="active">Login <i class="material-icons" style="position: relative; top: 5px;">person_outline</i></a></li>
+        <li class="tab col s6"><a href="#test2">Sign Up <i class="material-icons" style="position: relative; top: 5px;">person_add</i></a></li>
+      </ul>
+    </div>
+
+    <div class="modal-content">
+      <div id="test1" class="col s12">
+        <form action="login-form-submit" method="post">
+          <h5 style="text-align: center;">Login</h5>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email" data-error="Please Input a valid Email ID" data-success="right">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+
+          <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
+            <i class="material-icons right">send</i>
+        </button>
+        </form>
+      </div>
+
+
+      <div id="test2" class="col s12">
+        <h5 style="text-align: center;">Sign Up</h5>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="S_email" type="email" class="validate">
+            <label for="email" data-error="Please Input a valid Email ID" data-success="right">Email</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="S_password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+
+        <button class="btn waves-effect waves-light deep orange" type="submit" name="action">SignUp
+            <i class="material-icons right">person_add</i>
+          </button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Content-->
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.modal').modal();
+  });
+</script>

@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('signupLoginRoute');
+  this.route('login-form-submit');
 });
 
 export default Router;
