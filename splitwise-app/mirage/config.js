@@ -1,16 +1,20 @@
 export default function() {
   this.namespace = '/api';
 
-  this.get('/allUsers', function() {
+  this.get('/allUsersEmail', function() {
     return {
-      data: [
-      {
-        'firstName': 'dev',
-        'lastName': 'nigam',
-        'userEmail': 'someemail@test.com',
-        'userPassword': 'testPassword123'
+      allUsersEmailArray: ['testEmail1@test.com','testEmail2@test.com','testEmail3@test.com','testEmail4@test.com']
+    };
+  });
+
+  this.get('/usersEmailAuth', function() {
+    return {
+      userPwd: {
+        'testEmail1@test.com' : 'testPassword1',
+        'testEmail2@test.com' : 'testPassword2',
+        'testEmail3@test.com' : 'testPassword3',
+        'testEmail4@test.com' : 'testPassword4'
       }
-      ]
     };
   });
 }

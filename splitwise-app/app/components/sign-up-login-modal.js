@@ -16,13 +16,19 @@ export default Ember.Component.extend({
   },
   actions: {
     checkLogin() {
-      console.log(this.userLoginObject);
-      Ember.$.getJSON('splitwiseRestCall/allUsers').then(data => {
-        console.log(data);
+      var allUsersEmailPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+        Ember.$.getJSON('api/allUsersEmail').then(data => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject(data);
+          }
+        });
       });
+      this.send('callThisFunctionInAController',allUsersEmailPromise);
     },
     signUpUser() {
-      console.log(this.userSignUpObject);
+      //console.log(this.userSignUpObject);
     },
     checkForLoginEmail() {
       this.userLoginObject.userEmail = this.get('userEmail');
@@ -41,6 +47,45 @@ export default Ember.Component.extend({
     },
     checkForSignUpEmail() {
       this.userSignUpObject.userEmail = this.get('userEmail');
+    },
+
+
+
+
+    callThisFunctionInAController(promise) {
+      var classThis = this;
+      promise.then(function(data){
+        if(data.allUsersEmailArray.includes(classThis.userLoginObject.userEmail)){
+          classThis.send('checkForPassword',classThis.userLoginObject.userEmail);
+        }else{
+          console.log('Wrong User');
+        }
+      });
+    },
+
+
+
+    checkForPassword(){
+      var allUsersAuthPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+        Ember.$.getJSON('api/usersEmailAuth').then(data => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject(data);
+          }
+        });
+      });
+      this.send('callThisFunctionInAController1',allUsersAuthPromise);
+    },
+    callThisFunctionInAController1(promise){
+      var classThis = this;
+      promise.then(function(data){
+        if(data.userPwd[classThis.userLoginObject.userEmail] === classThis.userLoginObject.userPassword){
+          console.log('authenticated User');
+        }else{
+          console.log('Wrong User');
+        }
+      });
     }
   }
 });
