@@ -9,26 +9,24 @@
 
     <div class="modal-content">
       <div id="test1" class="col s12">
-        <form method="post">
-          <h5 style="text-align: center;">Login</h5>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email" data-error="Please Input a valid Email ID" data-success="right">Email</label>
-            </div>
+        <h5 style="text-align: center;">Login</h5>
+        <div class="row">
+          <div class="input-field col s12">
+            {{input name="userEmail" type="email" class="validate" value=user.userEmail}}
+            <label for="email" data-error="Please Input a valid Email ID" data-success="right">Email</label>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
-            </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {{input name="userPassword" type="password" class="validate" value=user.userPassword }}
+            <label for="password">Password</label>
           </div>
+        </div>
 
-          <button {{action "checkLogin" on="submit"}} class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
+        <button {{action "checkLogin"}} class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
             <i class="material-icons right">send</i>
         </button>
-        </form>
       </div>
 
 
