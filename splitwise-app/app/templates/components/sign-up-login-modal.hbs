@@ -9,7 +9,7 @@
 
     <div class="modal-content">
       <div id="test1" class="col s12">
-        <form action="login-form-submit" method="post">
+        <form method="post">
           <h5 style="text-align: center;">Login</h5>
           <div class="row">
             <div class="input-field col s12">
@@ -25,7 +25,7 @@
             </div>
           </div>
 
-          <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
+          <button {{action "checkLogin" on="submit"}} class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
             <i class="material-icons right">send</i>
         </button>
         </form>
