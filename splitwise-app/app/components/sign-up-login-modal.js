@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import SomeRoute from '../routes/sign-up-login-modal';
 
 export default Ember.Component.extend({
-  init() {
-    this._super(...arguments);
+  model: function() {
+    return ['hiiiii'];
   },
   userLoginObject: {
     'userEmail': '',
@@ -25,7 +26,7 @@ export default Ember.Component.extend({
           }
         });
       });
-      this.send('callThisFunctionInAController',allUsersEmailPromise);
+      this.send('callThisFunctionInAController', allUsersEmailPromise);
     },
     signUpUser() {
       //console.log(this.userSignUpObject);
@@ -54,10 +55,10 @@ export default Ember.Component.extend({
 
     callThisFunctionInAController(promise) {
       var classThis = this;
-      promise.then(function(data){
-        if(data.allUsersEmailArray.includes(classThis.userLoginObject.userEmail)){
-          classThis.send('checkForPassword',classThis.userLoginObject.userEmail);
-        }else{
+      promise.then(function(data) {
+        if (data.allUsersEmailArray.includes(classThis.userLoginObject.userEmail)) {
+          classThis.send('checkForPassword', classThis.userLoginObject.userEmail);
+        } else {
           console.log('Wrong User');
         }
       });
@@ -65,7 +66,7 @@ export default Ember.Component.extend({
 
 
 
-    checkForPassword(){
+    checkForPassword() {
       var allUsersAuthPromise = new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.getJSON('api/usersEmailAuth').then(data => {
           if (data) {
@@ -75,14 +76,15 @@ export default Ember.Component.extend({
           }
         });
       });
-      this.send('callThisFunctionInAController1',allUsersAuthPromise);
+      this.send('callThisFunctionInAController1', allUsersAuthPromise);
     },
-    callThisFunctionInAController1(promise){
+    callThisFunctionInAController1(promise) {
       var classThis = this;
-      promise.then(function(data){
-        if(data.userPwd[classThis.userLoginObject.userEmail] === classThis.userLoginObject.userPassword){
+      promise.then(function(data) {
+        if (data.userPwd[classThis.userLoginObject.userEmail] === classThis.userLoginObject.userPassword) {
           console.log('authenticated User');
-        }else{
+          console.log(SomeRoute.sendAction('lelo'));
+        } else {
           console.log('Wrong User');
         }
       });
