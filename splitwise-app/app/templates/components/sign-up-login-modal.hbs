@@ -12,19 +12,19 @@
         <h5 style="text-align: center;">Login</h5>
         <div class="row">
           <div class="input-field col s12">
-            {{input name="userEmail" type="email" class="validate" value=user.userEmail}}
+            {{input name="userEmail" type="email" class="validate" value=userEmail change=(action 'checkForLoginEmail')}}
             <label for="email" data-error="Please Input a valid Email ID" data-success="right">Email</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            {{input name="userPassword" type="password" class="validate" value=user.userPassword }}
+            {{input name="userPassword" type="password" class="validate" value=userPassword change=(action 'fetchLoginPassword')}}
             <label for="password">Password</label>
           </div>
         </div>
 
-        <button {{action "checkLogin"}} class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
+        <button {{action "checkLogin" userLoginObject}} class="btn waves-effect waves-light deep orange" type="submit" name="action">Login
             <i class="material-icons right">send</i>
         </button>
       </div>
@@ -35,30 +35,30 @@
 
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate">
+            {{input name="firstName" type="text" class="validate" value=firstName change=(action 'checkForFirstName')}}
             <label for="first_name">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
+            {{input name="lastName" type="text" class="validate" value=lastName change=(action 'checkForLastName')}}
             <label for="last_name">Last Name</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="S_email" type="email" class="validate">
+            {{input name="userEmail" type="email" class="validate" value=userEmail change=(action 'checkForSignUpEmail')}}
             <label for="email" data-error="Please Input a valid Email ID" data-success="right">Email</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="S_password" type="password" class="validate">
+            {{input name="userPassword" type="password" class="validate" value=userPassword change=(action 'fetchSignUpPassword')}}
             <label for="password">Password</label>
           </div>
         </div>
 
-        <button class="btn waves-effect waves-light deep orange" type="submit" name="action">SignUp
+        <button {{action "signUpUser" userSignUpObject}} class="btn waves-effect waves-light deep orange" type="submit" name="action">SignUp
             <i class="material-icons right">person_add</i>
           </button>
       </div>
