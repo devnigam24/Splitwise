@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('sign-up-login-modal');
+  this.route('signup-login-modal');
 });
 
 export default Router;

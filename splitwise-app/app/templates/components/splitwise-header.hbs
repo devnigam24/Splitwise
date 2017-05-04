@@ -1,7 +1,10 @@
 <nav class="red z-depth-2" role="navigation">
     <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Splitwise</a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="waves-effect waves-light btn teal lighten-1" href="#modal1">Login/SignUp <i class="material-icons right">people</i></a></li>
+        <li>
+          <a class="waves-effect waves-light btn teal lighten-1">
+              {{#link-to "signup-login-modal"}}Login/SignUp{{/link-to}}
+          <i class="material-icons right">people</i></a></li>
         <li><a class="dropdown-button waves-effect btn-flat white-text" href="#" data-activates="dropdown1">Maruti Ram<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
 
@@ -19,5 +22,3 @@
     <li class="divider"></li>
     <li><a href="#!"><i class="material-icons left">exit_to_app</i>LogOut</a></li>
   </ul>
-
-  {{sign-up-login-modal}}

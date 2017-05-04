@@ -1,12 +1,11 @@
 import Ember from 'ember';
-import Router from '../router';
 
-export default Ember.Component.extend({
+export default Ember.Route.extend({
   init() {
     this._super(...arguments);
-    console.log('Header aa gaya');
   },
   didRender() {
     this._super(...arguments);
+    console.log('Modal aa gaya');
   }
 });
