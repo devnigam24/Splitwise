@@ -1,36 +1,451 @@
-<div class="row">
-  <div class="col s12 m4 l2 grey lighten-4">
-    <div class="custom">
+<div class="fixed-action-btn vertical">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Go to DashBoard" href="#"><i class="material-icons">home</i></a></li>
 
+    <li><a class="btn-floating yellow darken-1 tooltipped modal-trigger" data-position="left" data-delay="50" data-tooltip="Add a group" href="#modal_group"><i class="material-icons">people</i></a></li>
+
+    <li><a class="btn-floating green tooltipped modal-trigger" data-position="left" data-delay="50" data-tooltip="Add a Person" href="#modal_person"><i class="material-icons">person</i></a></li>
+
+    <li><a class="btn-floating blue tooltipped modal-trigger" data-position="left" data-delay="50" data-tooltip="Add a Bill" href="#modal_bill"><i class="material-icons">receipt</i></a></li>
+  </ul>
+</div>
+
+<!-- ======================Modal: ADD A BILL=============================== -->
+<div id="modal_bill" class="modal width-40">
+  <div class="modal-content2">
+    <div class="col no-pad_c s12">
+      <ul class="tabs tabs-fixed-width z-depth-2">
+        <li class="tab col s6"><a href="#test1" class="active">Individuals <i class="material-icons" style="position: relative; top: 5px;">person</i></a></li>
+        <li class="tab col s6"><a href="#test2">Group <i class="material-icons" style="position: relative; top: 5px;">people</i></a></li>
+      </ul>
+    </div>
+    <!-- ======================Modal: Individual Tab=============================== -->
+    <div class="modal-content custom-pad">
+      <div id="test1" class="col s12">
+        <div class="row">
+          <br>
+          <div class="s2 left">
+            <b>You</b> and:
+          </div>
+          <div class="col s10 left">
+            <div class="chips chips-autocomplete"></div>
+          </div>
+        </div>
+
+        <div class="divider"> </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_box</i>
+            <input id="description" type="text" class="validate">
+            <label for="description">Description</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">attach_money</i>
+            <input id="currency" type="number" min="1" class="validate">
+            <label for="currency">Amount</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <select multiple>
+                <option value="" disabled selected>Paid By</option>
+                <option value="1">User 1</option>
+                <option value="2">User 2</option>
+              </select>
+          </div>
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <select>
+                <option value="" disabled selected>Split</option>
+                <option value="1">Equally</option>
+                <option value="2">You Owe </option>
+                <option value="2">They Owe</option>
+              </select>
+          </div>
+        </div>
+
+        <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+
+      <!-- =========================MODAL: Group Tab=============================== -->
+      <div id="test2" class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">edit</i>
+            <input id="g_Name" type="text" class="validate">
+            <label for="description" data-error="Please enter a valid Group Name" data-success="right">Group Name</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">people</i>
+            <select multiple>
+                <option value="" disabled selected>People Included</option>
+                <option value="1">User 1</option>
+                <option value="2">User 2</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="divider"> </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_box</i>
+            <input id="g_description" type="text" class="validate">
+            <label for="description">Description</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">attach_money</i>
+            <input id="g_currency" type="number" min="1" class="validate">
+            <label for="currency">Amount</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <select multiple>
+                <option value="" disabled selected>Paid By</option>
+                <option value="1">User 1</option>
+                <option value="2">User 2</option>
+              </select>
+          </div>
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <select>
+                <option value="" disabled selected>Split</option>
+                <option value="1">Equally</option>
+                <option value="2">You Owe </option>
+                <option value="2">They Owe</option>
+              </select>
+          </div>
+        </div>
+
+        <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
     </div>
   </div>
-  <div class="col s12 m6 l9 z-depth-1">
-    <div class="custom">
+  <!-- Modal Content-->
+</div>
+
+<!-- =========================Modal: ADD A PERSON======================== -->
+<div id="modal_person" class="modal">
+  <div id="" class="modal-content">
+    <div class="input_fields_wrap">
       <div class="row">
-        <div class="col s8">
-          <h5 class="center">DashBoard</h5>
-        </div>
-        <div class="col s4"></div>
-      </div>
-      <div class="row grey lighten-2">
-        <div class="col s4">
-          <p class="d_content d_border">Total Balance</p>
-          <p class="d_content d_caption d_border red-text">-$12.76</p>
-        </div>
-        <div class="col s4">
-          <p class="d_content d_border">You Owe</p>
-          <p class="d_content d_caption d_border red-text">-$12.76</p>
-        </div>
-        <div class="col s4">
-          <p class="d_content">You are Owed</p>
-          <p class="d_content d_caption red-text">$4.83</p>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_box</i>
+          <input id="add_pname" type="text" class="validate">
+          <label for="add_p">Name</label>
         </div>
 
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mail</i>
+          <input id="add_pmail" type="email" class="validate">
+          <label for="add_pmail">Email</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="add_field_button" class=" waves-effect waves-light btn-floating btn-flat right red"><i class="material-icons right ">add</i></button>
       </div>
     </div>
-  </div>
 
-  <div class="col m2 l1">
-    <p>s12 m4 l8</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">Add Persons</a>
   </div>
 </div>
+
+
+
+<!-- =====================Modal: ADD A GROUP============================== -->
+<div id="modal_group" class="modal">
+  <div class="modal-content">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">account_box</i>
+      <input id="add_gname" type="text" class="validate">
+      <label for="add_p">Group Name</label>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <i class="material-icons prefix">account_box</i>
+        <input id="" type="text" class="validate">
+        <label for="add_gp">Name</label>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">mail</i>
+        <input id="" type="email" class="validate">
+        <label for="add_gpmail">Email</label>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">account_box</i>
+        <input id="" type="text" class="validate">
+        <label for="add_gp">Name</label>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">mail</i>
+        <input id="" type="email" class="validate">
+        <label for="add_gpmail">Email</label>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">account_box</i>
+        <input id="" type="text" class="validate">
+        <label for="add_gp">Name</label>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">mail</i>
+        <input id="" type="email" class="validate">
+        <label for="add_gpmail">Email</label>
+      </div>
+      <div class="col s12">
+        <button id="" class=" waves-effect waves-light btn-floating btn-flat right red"><i class="material-icons right ">add</i></button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">ADD Group</a>
+  </div>
+</div>
+<!-- ===================================================================== -->
+
+
+
+<!-- ======================CONTENT DashBoard=============================-->
+<div class="container">
+  <div class="row">
+    <div class="col s12 no-pad_c">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab col s3"><a class="active" href="#tab_friends">Friends</a></li>
+        <li class="tab col s3"><a href="#tab_groups">Groups</a></li>
+        <li class="tab col s3"><a href="#tab_activity">Activity</a></li>
+      </ul>
+    </div>
+    <!-- =====================Content: TAB Friends============================== -->
+    <div id="tab_friends" class="col s12">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">person</i>
+                <span class="title">Friend 1</span>
+                <p class="caption red-text">
+                  You Owe: $1.68
+                </p>
+                <a href="#!" class="secondary-content">Settle Up</a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapsible-body">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">store_mall_directory</i>
+                <span class="title">Target Shopping</span>
+                <p class="caption">Groceries</p>
+                <a href="#!" class="secondary-content">Settle Up</a>
+              </li>
+            </ul>
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle yellow darken-2">flash_on</i>
+                <span class="title">Electricity</span>
+                <p class="caption">Utilities</p>
+                <a href="#!" class="secondary-content">Settled</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">person</i>
+                <span class="title">Friend 2</span>
+                <p class="caption green-text">
+                  You Get Back: $2.89
+                </p>
+                <a href="#!" class="secondary-content">Settle Up</a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">person</i>
+                <span class="title">Friend 3</span>
+                <p class="caption">
+                  Settled
+                </p>
+                <a href="#!" class="secondary-content">Settled</a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- =====================Content: TAB Groups============================== -->
+    <div id="tab_groups" class="col s12">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">people</i>
+                <span class="title">Group 1</span>
+                <p class="caption">
+                  Owes You
+                </p>
+                <a href="#!" class="secondary-content"> Settle Up</a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapsible-body">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle black">directions_car</i>
+                <span class="title">Uber</span>
+                <p class="caption">
+                  Travel
+                </p>
+                <a href="#!" class="secondary-content">Settled Up</a>
+              </li>
+            </ul>
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">store_mall_directory</i>
+                <span class="title">Target Shopping</span>
+                <p class="caption">
+                  Groceries
+                </p>
+                <a href="#!" class="secondary-content">Settled Up</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">people</i>
+                <span class="title">Group 2</span>
+                <p class="caption">
+                  You Owe
+                </p>
+                <a href="#!" class="secondary-content">Settle Up</a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapsible-body">
+
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">people</i>
+                <span class="title">Group 3</span>
+                <p class="caption">
+                  Settled
+                </p>
+                <a href="#!" class="secondary-content">Settled</a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapsible-body">
+
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- =====================Content: TAB Activity============================== -->
+    <div id="tab_activity" class="col s12">
+      <ul class="collection">
+        <li class="collection-item">
+          <i class="material-icons circle">local_drink</i>
+          <b>You</b> Added <b>"Drink"</b>
+          <p class="caption green-text"> You get back $4.38</p>
+        </li>
+        <li class="collection-item">
+          <i class="material-icons circle">shopping_cart</i> <b>Dev</b> Added <b>"Groceries"</b>
+          <p class="caption red-text"> You owe $0.38</p>
+        </li>
+        <li class="collection-item">
+          <i class="material-icons circle">store</i> <b>Neha</b> Added <b>"Vegetables"</b> in <b>"Group 1"</b>
+          <p class="caption red-text"> You owe $1.86</p>
+        </li>
+        <li class="collection-item">
+          <i class="material-icons circle">directions_car</i> <b>Anjie</b> added <b>"Uber"</b> in <b>"Group 1"</b>
+          <p class="caption grey-text"> Settled</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  // MOBILE MENU TRIGGER
+  $(".button-collapse").sideNav();
+  // Modal Trigger
+  $(document).ready(function() {
+    $('.modal').modal();
+  });
+  // Tab Trigger
+  $(document).ready(function() {
+    $('ul.tabs').tabs();
+  });
+
+  // Select Menu Trigger
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+
+  // Chips Trigger
+  $('.chips').material_chip();
+  $('.chips-autocomplete').material_chip({
+    autocompleteOptions: {
+      data: {
+        'User1': null,
+        'User2': null,
+        'User3': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
+
+  // JQUERY
+  $(document).ready(function() {
+ 2      var max_fields = 10; //maximum input boxes allowed
+ 3      var wrapper = $(".input_fields_wrap"); //Fields wrapper
+ 4      var add_button = $("#add_field_button"); //Add button ID
+ 5      var appendHTML = '<div class="row"><div class="input-field col s6"><i class="material-icons prefix">account_box</i><input id="add_pname" type="text" class="validate" ><label for="add_p">Name</label></div><div class="input-field col s6"><i class="material-icons prefix">mail</i><input id="add_pmail" type="email" min="1" class="validate"><label for="currency">Email</label></div><a href="#" class="remove_field">X</a></div>'
+ 6
+ 7      var x = 1; //initlal text box count
+  //some code here to paste
+        $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+17        e.preventDefault();
+18        $(this).parent('div').remove();
+19        x--;
+20      });
+21    });
+</script>

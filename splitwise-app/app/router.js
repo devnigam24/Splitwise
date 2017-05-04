@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('signup-login-modal');
+  this.route('user-dashboard');
 });
 
 export default Router;

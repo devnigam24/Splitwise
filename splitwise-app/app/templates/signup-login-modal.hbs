@@ -1,4 +1,6 @@
-<div id="modal1" class="modal">
+{{model}}
+{{dupe}}
+<div id="signup-login-modal" class="modal">
   <div class="modal-content2">
     <div class="col s12">
       <ul class="tabs tabs-fixed-width z-depth-2">
@@ -69,7 +71,7 @@
 
 <script>
   $(document).ready(function() {
-    $('.modal').modal();
-    $('#modal1').toggle();
+    $('#signup-login-modal').modal();
+    $('#signup-login-modal').fadeIn(3000);
   });
 </script>

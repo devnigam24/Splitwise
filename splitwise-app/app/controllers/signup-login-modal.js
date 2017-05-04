@@ -22,10 +22,10 @@ export default Ember.Controller.extend({
           }
         });
       });
-      this.sendAction('checkLoginCredentials', allUsersEmailPromise, this.userLoginObject);
+      this.send('checkLoginCredentials', allUsersEmailPromise, this.userLoginObject);
     },
     signUpUser() {
-      this.sendAction('saveUserIntoDB', this.userSignUpObject);
+      this.send('saveUserIntoDB', this.userSignUpObject);
     },
     checkForLoginEmail() {
       this.userLoginObject.userEmail = this.get('userEmail');
