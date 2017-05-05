@@ -43,17 +43,22 @@ export default Ember.Route.extend({
       });
     },
     saveUserIntoDB(userSignUpObject) {
-      // var userObject = this.store.createRecord('user', userSignUpObject);
-      // userObject.save();
-      this.store.push({
-        data: {
-          id: userSignUpObject.userEmail,
-          type: 'person',
-          attributes: {userSignUpObject}
-        }
+      var record = this.store.createRecord('person', {
+        firstName: 'Rails is Omakase',
+        lastName: 'Lorem ipsum'
       });
-
-      console.log(this.store.get(userSignUpObject.userEmail));
+      record.save();
+      // var userObject = this.store.createRecord('person', userSignUpObject);
+      // userObject.save();
+      // this.store.push({
+      //   data: {
+      //     id: userSignUpObject.userEmail,
+      //     type: 'person',
+      //     attributes: {
+      //       userSignUpObject
+      //     }
+      //   }
+      // });
     }
   }
 });

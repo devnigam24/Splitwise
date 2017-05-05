@@ -7,7 +7,7 @@ export default function() {
     };
   });
 
-  this.get('/people', function() {
+  this.get('/usersEmailAuth', function() {
     return {
       userPwd: {
         'testEmail1@test.com': 'testPassword1',

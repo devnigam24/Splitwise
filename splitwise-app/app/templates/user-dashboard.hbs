@@ -1,3 +1,4 @@
+{{model.firstName}}
 <div class="fixed-action-btn vertical">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">mode_edit</i>
@@ -432,20 +433,4 @@
       minLength: 1
     }
   });
-
-  // JQUERY
-  $(document).ready(function() {
- 2      var max_fields = 10; //maximum input boxes allowed
- 3      var wrapper = $(".input_fields_wrap"); //Fields wrapper
- 4      var add_button = $("#add_field_button"); //Add button ID
- 5      var appendHTML = '<div class="row"><div class="input-field col s6"><i class="material-icons prefix">account_box</i><input id="add_pname" type="text" class="validate" ><label for="add_p">Name</label></div><div class="input-field col s6"><i class="material-icons prefix">mail</i><input id="add_pmail" type="email" min="1" class="validate"><label for="currency">Email</label></div><a href="#" class="remove_field">X</a></div>'
- 6
- 7      var x = 1; //initlal text box count
-  //some code here to paste
-        $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
-17        e.preventDefault();
-18        $(this).parent('div').remove();
-19        x--;
-20      });
-21    });
 </script>
