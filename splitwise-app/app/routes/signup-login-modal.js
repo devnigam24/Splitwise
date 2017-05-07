@@ -8,6 +8,11 @@ export default Ember.Route.extend({
   didRender() {
     this._super(...arguments);
   },
+  model() {
+    return Ember.$.getJSON('api/getAllUsersFromJSONServer').then(data => {
+      console.log(data);
+    });
+  },
   actions: {
     checkLoginCredentials(promise, userLoginObject) {
       var classThis = this;
@@ -43,22 +48,18 @@ export default Ember.Route.extend({
       });
     },
     saveUserIntoDB(userSignUpObject) {
-      var record = this.store.createRecord('person', {
-        firstName: 'Rails is Omakase',
-        lastName: 'Lorem ipsum'
+      var saveUserIntoDBPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+        Ember.$.post('api/saveUserIntoDB', userSignUpObject).then(data => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject(data);
+          }
+        });
       });
-      record.save();
-      // var userObject = this.store.createRecord('person', userSignUpObject);
-      // userObject.save();
-      // this.store.push({
-      //   data: {
-      //     id: userSignUpObject.userEmail,
-      //     type: 'person',
-      //     attributes: {
-      //       userSignUpObject
-      //     }
-      //   }
-      // });
+      saveUserIntoDBPromise.then(function(data) {
+        console.log('saveUserIntoDBPromise' + data);
+      });
     }
   }
 });
