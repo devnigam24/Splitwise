@@ -15,7 +15,7 @@ http.createServer(function(req, res) {
   console.log('Responding to a request.');
   console.log("urlValue->>>>>>" + req.url);
   res.setHeader('Content-Type', 'application/json');
-  if (req.url === '/getAllUserInNodeServer') {
+  if (req.url === '/api/getAllUsersFromJSONServer') {
     http.request(options, function(response) {
       var str = ''
       response.on('data', function(chunk) {

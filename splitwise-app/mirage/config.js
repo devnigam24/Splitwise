@@ -22,9 +22,7 @@ export default function() {
     console.log('saveUserIntoDBPromise->>' + data);
   });
 
-  this.get('/getAllUsersFromJSONServer',function() {
-    $.get('http://localhost:3000/getAllUserInNodeServer').then(function(data){
+  this.get('/getAllUsersFromJSONServer',function(data) {
       console.log(data);
     });
-  });
 }
