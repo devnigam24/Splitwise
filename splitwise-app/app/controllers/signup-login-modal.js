@@ -13,16 +13,7 @@ export default Ember.Controller.extend({
   },
   actions: {
     checkLogin() {
-      var allUsersEmailPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON('api/allUsersEmail').then(data => {
-          if (data) {
-            resolve(data);
-          } else {
-            reject(data);
-          }
-        });
-      });
-      this.send('checkLoginCredentials', allUsersEmailPromise, this.userLoginObject);
+      this.send('checkLoginCredentials', this.userLoginObject);
     },
     signUpUser() {
       this.send('saveUserIntoDB', this.userSignUpObject);

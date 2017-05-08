@@ -1,11 +1,17 @@
-<nav class="red z-depth-2" role="navigation">
+<nav class="myHeader red z-depth-2" role="navigation">
     <div class="nav-wrapper"><a id="logo-container" href="/" class="brand-logo">Splitwise</a>
       <ul class="right hide-on-med-and-down">
-        <li>
+        {{#if userInSession.firstName}}        
+          <li>
+            <a class="dropdown-button waves-effect btn-flat white-text" 
+            href="#" onclick="openDropDown()" data-activates="dropdown1">{{userInSession.firstName}} {{userInSession.lastName}}
+            <i class="material-icons right">arrow_drop_down</i></a></li>
+        {{else}}
+        <li>        
           <a class="waves-effect waves-light btn teal lighten-1">
               {{#link-to "signup-login-modal"}}Login/SignUp{{/link-to}}
           <i class="material-icons right">people</i></a></li>
-        <li><a class="dropdown-button waves-effect btn-flat white-text" href="#" data-activates="dropdown1">Maruti Ram<i class="material-icons right">arrow_drop_down</i></a></li>
+        {{/if}}
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -15,10 +21,11 @@
     </div>
   </nav>
 
-
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!"><i class="material-icons left">account_circle</i>My Account</a></li>
-    <li><a href="#!"><i class="material-icons left">subject</i>My Activities</a></li>
-    <li class="divider"></li>
-    <li><a href="#!"><i class="material-icons left">exit_to_app</i>LogOut</a></li>
-  </ul>
+  {{#if userInSession.firstName}}
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!"><i class="material-icons left">account_circle</i>My Account</a></li>
+        <li><a href="#!"><i class="material-icons left">subject</i>My Activities</a></li>
+        <li class="divider"></li>
+        <li><a href="#!"><i class="material-icons left">exit_to_app</i>LogOut</a></li>
+      </ul>
+  {{/if}}

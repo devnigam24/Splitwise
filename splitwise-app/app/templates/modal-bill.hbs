@@ -1,0 +1,131 @@
+{{more-options}}
+<div id="modal_bill" class="modal width-40">
+    <div class="modal-content2">
+      <div class="col no-pad_c s12">
+        <ul class="tabs tabs-fixed-width z-depth-2">
+          <li class="tab col s6"><a href="#test1" class="active">Individuals <i class="material-icons" style="position: relative; top: 5px;">person</i></a></li>
+          <li class="tab col s6"><a href="#test2">Group <i class="material-icons" style="position: relative; top: 5px;">people</i></a></li>
+        </ul>
+      </div>
+      
+<!-- ======================Modal: Individual Tab=============================== -->
+      <div class="modal-content custom-pad">
+        <div id="test1" class="col s12">
+          <div class="row">
+            <br>
+            <div class="s2 left">
+              <b>You</b> and:
+            </div>
+            <div class="col s10 left">
+              <div class="chips chips-autocomplete"></div>
+            </div>
+          </div>
+
+          <div class="divider">  </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_box</i>
+              <input id="description" type="text" class="validate" >
+              <label for="description">Description</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">attach_money</i>
+              <input id="currency" type="number" min="1" class="validate">
+              <label for="currency">Amount</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <select multiple>
+                <option value="" disabled selected>Paid By</option>
+                <option value="1">User 1</option>
+                <option value="2">User 2</option>
+              </select>
+            </div>
+
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <select>
+                <option value="" disabled selected>Split</option>
+                <option value="1">Equally</option>
+                <option value="2">You Owe </option>
+                <option value="2">They Owe</option>
+              </select>
+            </div>
+        </div>
+
+          <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+      <!-- =========================MODAL: Group Tab=============================== -->
+        <div id="test2" class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">edit</i>
+              <input id="g_Name" type="text" class="validate" >
+              <label for="description" data-error="Please enter a valid Group Name" data-success="right">Group Name</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">people</i>
+              <select multiple>
+                <option value="" disabled selected>People Included</option>
+                <option value="1">User 1</option>
+                <option value="2">User 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="divider">  </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_box</i>
+              <input id="g_description" type="text" class="validate" >
+              <label for="description">Description</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">attach_money</i>
+              <input id="g_currency" type="number" min="1" class="validate">
+              <label for="currency">Amount</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <select multiple>
+                <option value="" disabled selected>Paid By</option>
+                <option value="1">User 1</option>
+                <option value="2">User 2</option>
+              </select>
+            </div>
+
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <select>
+                <option value="" disabled selected>Split</option>
+                <option value="1">Equally</option>
+                <option value="2">You Owe </option>
+                <option value="2">They Owe</option>
+              </select>
+            </div>
+        </div>
+
+          <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Content-->
+  </div>
+<script>
+  $(document).ready(function() {
+    $('.modal').modal();
+    $('.modal').fadeIn(3000);
+  });
+</script>

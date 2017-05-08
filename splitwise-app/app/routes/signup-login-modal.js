@@ -5,19 +5,21 @@ export default Ember.Route.extend({
     this._super(...arguments);
     console.log('Modal aa gaya');
   },
-  didRender() {
-    this._super(...arguments);
-  },
-  model() {
-    return Ember.$.getJSON('api/getAllUsersFromJSONServer').then(data => {
-      console.log(data);
-    });
-  },
   actions: {
-    checkLoginCredentials(promise, userLoginObject) {
+    checkLoginCredentials(userLoginObject) {
       var classThis = this;
-      promise.then(function(data) {
-        if (data.allUsersEmailArray.includes(userLoginObject.userEmail)) {
+      var allUsersEmailPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+        Ember.$.getJSON('/allUsersEmailArray').then(data => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject(data);
+          }
+        });
+      });
+
+      allUsersEmailPromise.then(function(data) {
+        if (data.includes(userLoginObject.userEmail)) {
           classThis.send('checkForPassword', userLoginObject);
         } else {
           console.log('Wrong User');
@@ -26,7 +28,7 @@ export default Ember.Route.extend({
     },
     checkForPassword(userLoginObject) {
       var allUsersAuthPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON('api/usersEmailAuth').then(data => {
+        Ember.$.getJSON('/allUsersEmailAndPwd').then(data => {
           if (data) {
             resolve(data);
           } else {
@@ -34,12 +36,12 @@ export default Ember.Route.extend({
           }
         });
       });
-      this.send('callThisFunctionInAController1', allUsersAuthPromise, userLoginObject);
+      this.send('authenticateUser', allUsersAuthPromise, userLoginObject);
     },
-    callThisFunctionInAController1(promise, userLoginObject) {
+    authenticateUser(promise, userLoginObject) {
       var _this = this;
       promise.then(function(data) {
-        if (data.userPwd[userLoginObject.userEmail] === userLoginObject.userPassword) {
+        if (data[userLoginObject.userEmail] === userLoginObject.userPassword) {
           console.log('authenticated User');
           _this.transitionTo('user-dashboard');
         } else {
@@ -48,8 +50,9 @@ export default Ember.Route.extend({
       });
     },
     saveUserIntoDB(userSignUpObject) {
+      var _this = this;
       var saveUserIntoDBPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.post('api/saveUserIntoDB', userSignUpObject).then(data => {
+        Ember.$.post('/postOneRegisteredUserObjects', userSignUpObject).then(data => {
           if (data) {
             resolve(data);
           } else {
@@ -59,6 +62,7 @@ export default Ember.Route.extend({
       });
       saveUserIntoDBPromise.then(function(data) {
         console.log('saveUserIntoDBPromise' + data);
+        _this.transitionTo('user-dashboard');
       });
     }
   }
