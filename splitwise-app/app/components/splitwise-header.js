@@ -4,6 +4,10 @@ export default Ember.Component.extend({
   userInSession : {},
   init() {
     this._super(...arguments);
+    
+  },
+  didInsertElement() {
+    this._super(...arguments);
     var userInsessionPromise = new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.getJSON('/getUserInSession').then(data => {
           if (data) {
@@ -17,5 +21,23 @@ export default Ember.Component.extend({
     userInsessionPromise.then(function(data) {
        _this.set('userInSession',data);
     });
-  } 
+  },
+  actions : {
+      logOut(){
+          console.log('logout');
+          var logoutPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+            Ember.$.getJSON('/logout').then(data => {
+              if (data) {
+                resolve(data);
+              } else {
+                reject(data);
+              }
+            });
+        });
+        var _this = this;
+        logoutPromise.then(function(data) {
+           window.location.href = "http://localhost:4200";
+        });
+      }
+  }
 });

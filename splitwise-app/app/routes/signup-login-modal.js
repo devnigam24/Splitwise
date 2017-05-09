@@ -42,8 +42,20 @@ export default Ember.Route.extend({
       var _this = this;
       promise.then(function(data) {
         if (data[userLoginObject.userEmail] === userLoginObject.userPassword) {
-          console.log('authenticated User');
-          _this.transitionTo('user-dashboard');
+          console.log('authenticated User');               
+          var setUserInSessionPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+            Ember.$.post('/setUserInSession',userLoginObject).then(data => {
+              if (data) {
+                resolve(data);
+              } else {
+                reject(data);
+              }
+            });
+          });
+          setUserInSessionPromise.then(function(data) {
+            console.log('saveUserIntoDBPromise' + data);
+            _this.transitionTo('user-dashboard');
+          });
         } else {
           console.log('Wrong User');
         }

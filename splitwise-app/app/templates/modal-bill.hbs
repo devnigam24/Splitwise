@@ -1,4 +1,5 @@
 {{more-options}}
+
 <div id="modal_bill" class="modal width-40">
     <div class="modal-content2">
       <div class="col no-pad_c s12">
@@ -13,12 +14,14 @@
         <div id="test1" class="col s12">
           <div class="row">
             <br>
-            <div class="s2 left">
-              <b>You</b> and:
-            </div>
-            <div class="col s10 left">
-              <div class="chips chips-autocomplete"></div>
-            </div>
+            <div class="input-field col s10">
+            <select multiple onchange={{action "fetchFriends" value="value"}} >    
+              {{#each model.friends as |onrFriend|}}
+              <option value="{{onrFriend.emailId}}">{{onrFriend.name}}</option>
+              {{/each}}
+            </select>
+            <label>You and : </label>
+          </div>
           </div>
 
           <div class="divider">  </div>
@@ -26,39 +29,17 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">account_box</i>
-              <input id="description" type="text" class="validate" >
+              {{input id="description" name="description" type="text" value=description change=(action 'fetchDescription')}}
               <label for="description">Description</label>
             </div>
             <div class="input-field col s6">
               <i class="material-icons prefix">attach_money</i>
-              <input id="currency" type="number" min="1" class="validate">
+              {{input id="currency" name="amount" type="text" value=amount change=(action 'fetchAmount')}}
               <label for="currency">Amount</label>
             </div>
           </div>
 
-          <div class="row">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <select multiple>
-                <option value="" disabled selected>Paid By</option>
-                <option value="1">User 1</option>
-                <option value="2">User 2</option>
-              </select>
-            </div>
-
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <select>
-                <option value="" disabled selected>Split</option>
-                <option value="1">Equally</option>
-                <option value="2">You Owe </option>
-                <option value="2">They Owe</option>
-              </select>
-            </div>
-        </div>
-
-          <button class="btn waves-effect waves-light deep orange" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
+          <button {{action "save" billObject}} class="btn waves-effect waves-light deep orange" type="submit" name="action">Submit<i class="material-icons right">send</i>
           </button>
         </div>
 
@@ -127,5 +108,6 @@
   $(document).ready(function() {
     $('.modal').modal();
     $('.modal').fadeIn(3000);
+    $('select').material_select();
   });
 </script>

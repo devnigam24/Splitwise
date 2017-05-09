@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('modal-bill');
   this.route('modal-person');
   this.route('modal-group');
+  this.route('log-out');
 });
 
 export default Router;

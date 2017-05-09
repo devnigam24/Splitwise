@@ -1,10 +1,4 @@
 {{more-options}}
-{{model.firstName}}
-{{model.lastName}}
-{{model.userEmail}}
-{{#each model.friends as |onrFriend|}}
-{{onrFriend.emailId}}
-{{/each}}
 
 <div class="container">
   <div class="row">
@@ -18,7 +12,7 @@
       <!-- =====================Content: TAB Friends============================== -->
       <div id="tab_friends" class="col s12">
         <ul class="collapsible" data-collapsible="accordion">
-        {{#each model.friends as |onrFriend|}}
+        {{#each model.userInsession.friends as |onrFriend|}}
             <li>
                 <div class="collapsible-header">
               <ul class="collection">
@@ -27,9 +21,6 @@
                 <span class="title">{{onrFriend.name}}</span>
                 <p class="caption red-text">
                    You Owe: ${{onrFriend.balance}}
-                </p>
-                <p class="caption green-text">
-                   He Owe: ${{onrFriend.balance}}
                 </p>
                 <a href="#!" class="secondary-content">Settle Up</a>
               </li>
@@ -122,23 +113,13 @@
       <!-- =====================Content: TAB Activity============================== -->
       <div id="tab_activity" class="col s12">
         <ul class="collection">
-       <li class="collection-item">
-         <i class="material-icons circle">local_drink</i>
-         <b>You</b> Added <b>"Drink"</b>
-         <p class="caption green-text"> You get back $4.38</p>
-       </li>
-       <li class="collection-item">
-          <i class="material-icons circle">shopping_cart</i> <b>Dev</b> Added <b>"Groceries"</b>
-          <p class="caption red-text"> You owe $0.38</p>
-       </li>
-       <li class="collection-item">
-          <i class="material-icons circle">store</i> <b>Neha</b> Added <b>"Vegetables"</b> in <b>"Group 1"</b>
-          <p class="caption red-text"> You owe $1.86</p>
-       </li>
-       <li class="collection-item">
-          <i class="material-icons circle">directions_car</i> <b>Anjie</b> added <b>"Uber"</b> in <b>"Group 1"</b>
-          <p class="caption grey-text"> Settled</p>
-       </li>
+        {{#each model.expenses as |onrExpence|}}
+           <li class="collection-item">
+             <i class="material-icons circle">local_drink</i>
+             <b>{{onrExpence.paidBy}}</b> Added <b>{{onrExpence.description}}</b>
+             <p class="caption green-text"> {{onrExpence.paidBy}} get back ${{onrExpence.getBack}}</p>
+           </li>
+       {{/each}}
      </ul>
       </div>
     </div>
@@ -177,26 +158,4 @@
         minLength: 1
       }
     });
-
-// JQUERY
-    $(document).ready(function() {
-    var maxfields   = 10; //maximum input boxes allowed
-    var wrapper       = $(".input_fields_wrap"); //Fields wrapper
-    var add_button = $("#add_field_button"); //Add button ID
-    var appendHTML = '<div class="row"><div class="input-field col s6"><i class="material-icons prefix">account_box</i><input id="add_pname" type="text" class="validate" ><label for="add_p">Name</label></div><div class="input-field col s6"><i class="material-icons prefix">mail</i><input id="add_pmail" type="email" min="1" class="validate"><label for="currency">Email</label></div><a href="#" class="remove_field">X</a></div>';
-
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){
-        //on add input button click
-        e.preventDefault();
-        <!-- if(x < 10){
-            x++; 
-            $(wrapper).appen(appendHTML);
-        } -->
-    });
-
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').remove(); x--;
-    })
-});
   </script>

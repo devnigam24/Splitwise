@@ -8,14 +8,8 @@ app.use(express.static("."));
 app.use(bodyparser.json({ type: 'application/*+json' }));
 app.use(bodyparser.urlencoded({ extended: false }));
 
-var userInSessionObject =   {
-                              "firstName": "sanika",
-                              "lastName": "sanika",
-                              "userEmail": "sanika@sanika.com",
-                              "userPassword": "sanika",
-                              "id": "sanika@sanika.com",
-                              "friends": [{"name": "dev","emailId": "devnigam24@test.com",'balance': '0'}]
-                            };
+//var userInSessionObject =   {"userEmail": "maruti@gmail.com"};
+var userInSessionObject =   {};
 var client = new Client();
 var host = 'http://localhost:3009';
 
@@ -25,27 +19,56 @@ app.get('/', function(req,res){
 
 app.get('/allUsersEmailArray', function(req,res) {    
     client.get(host+req.url, function (data, response) {
-        console.log(data);
+        
         res.send(data);
     });
 });
 
 app.get('/allRegisteredUserObjects', function(req,res) {
     client.get(host+req.url, function (data, response) {
-        console.log(data);
+        
         res.send(data);
     });
 });
 
 app.get('/allUsersEmailAndPwd', function(req,res) {
     client.get(host+req.url, function (data, response) {
-        console.log(data);
+        
         res.send(data);
     });
 });
 
+app.get('/getFriends', function(req,res) {
+    client.get(host+'/allRegisteredUserObjects'+'/'+userInSessionObject.userEmail, function (data, response) {
+        
+        res.send(data);
+    });
+});
+
+app.get('/getAllExpenses', function(req,res) {
+    console.log(host+'/expenses');
+    client.get(host+'/expenses', function (data, response) {
+        
+        res.send(data);
+    });
+});
+
+app.get('/logout', function(req,res) {
+    userInSessionObject =   {};
+    res.send({'logout':'done'});
+});
+
 app.get('/getUserInSession', function(req,res) {
     res.send(userInSessionObject);
+});
+
+app.post('/setUserInSession', function(req,res) {
+    console.log("req.body"+host+"/allRegisteredUserObjects/"+req.body.userEmail);
+    client.get(host+"/allRegisteredUserObjects/"+req.body.userEmail, function (data, response) {
+        
+        userInSessionObject = data;
+        res.send(data);
+    });
 });
 
 app.post('/postOneRegisteredUserObjects', function(req,res) {
@@ -65,7 +88,6 @@ app.post('/postOneRegisteredUserObjects', function(req,res) {
     };
     
     client.post(host+"/allRegisteredUserObjects", args, function (data, response) {
-        console.log(data);
         res.send(data);
     });
 });
@@ -75,8 +97,7 @@ app.post('/addFriendIntoList', function(req,res) {
     var friendObject = {
       'name': req.body.name,
       'emailId': req.body.email,
-      'youOwe': '0',
-      'heOws': '0'
+      'balance': '0'
     }    
     
     client.get(host+"/allRegisteredUserObjects/"+userInSessionObject.userEmail, function (dataObj, response) {
@@ -84,17 +105,30 @@ app.post('/addFriendIntoList', function(req,res) {
         dataObj.friends.push(friendObject);
         console.log(dataObj);        
         client.delete(host+"/allRegisteredUserObjects/"+userInSessionObject.userEmail,function(data){
-            console.log(data);
+            
         });
         var args = {
             data: dataObj,
             headers: { "Content-Type": "application/json" }
         };
         client.post(host+"/allRegisteredUserObjects", args, function (data, response) {
-            console.log(data);
+            
             userInSessionObject = data;
             res.send(dataObj);
         });         
+    });
+});
+
+app.post('/addBillIntoList', function(req,res) {
+    var billObject = {'paidBy': userInSessionObject.firstName,'description': req.body.description,'amount': req.body.amount,'friends':req.body.friends,'getBack':req.body.getBack,'id':userInSessionObject.firstName+req.body.description};
+    
+    var args = {
+        data: billObject,
+        headers: { "Content-Type": "application/json" }
+    };
+    console.log(billObject);
+    client.post(host+"/expenses", args, function (data, response) {        
+        res.send(data);
     });
 });
 
