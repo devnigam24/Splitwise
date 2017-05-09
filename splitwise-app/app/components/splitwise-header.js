@@ -1,43 +1,43 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  userInSession : {},
+  userInSession: {},
   init() {
     this._super(...arguments);
-    
+
   },
   didInsertElement() {
     this._super(...arguments);
     var userInsessionPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON('/getUserInSession').then(data => {
+      Ember.$.getJSON('/getUserInSession').then(data => {
+        if (data) {
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      });
+    });
+    var _this = this;
+    userInsessionPromise.then(function(data) {
+      _this.set('userInSession', data);
+    });
+  },
+  actions: {
+    logOut() {
+      console.log('logout');
+      var logoutPromise = new Ember.RSVP.Promise(function(resolve, reject) {
+        Ember.$.getJSON('/logout').then(data => {
           if (data) {
             resolve(data);
           } else {
             reject(data);
           }
         });
-    });
-    var _this = this;
-    userInsessionPromise.then(function(data) {
-       _this.set('userInSession',data);
-    });
-  },
-  actions : {
-      logOut(){
-          console.log('logout');
-          var logoutPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-            Ember.$.getJSON('/logout').then(data => {
-              if (data) {
-                resolve(data);
-              } else {
-                reject(data);
-              }
-            });
-        });
-        var _this = this;
-        logoutPromise.then(function(data) {
-           window.location.href = "http://localhost:4200";
-        });
-      }
+      });
+      var _this = this;
+      logoutPromise.then(function(data) {
+        window.location.href = "http://localhost:4200";
+      });
+    }
   }
 });

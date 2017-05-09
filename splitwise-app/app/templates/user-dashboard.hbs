@@ -2,160 +2,160 @@
 
 <div class="container">
   <div class="row">
-      <div class="col s12 no-pad_c">
-        <ul class="tabs tabs-fixed-width">
-          <li class="tab col s3"><a class="active" href="#tab_friends">Friends</a></li>
-          <li class="tab col s3"><a  href="#tab_groups">Groups</a></li>
-          <li class="tab col s3"><a href="#tab_activity">Activity</a></li>
-        </ul>
-      </div>
-      <!-- =====================Content: TAB Friends============================== -->
-      <div id="tab_friends" class="col s12">
-        <ul class="collapsible" data-collapsible="accordion">
+    <div class="col s12 no-pad_c">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab col s3"><a class="active" href="#tab_friends">Friends</a></li>
+        <li class="tab col s3"><a href="#tab_groups">Groups</a></li>
+        <li class="tab col s3"><a href="#tab_activity">Activity</a></li>
+      </ul>
+    </div>
+    <!-- =====================Content: TAB Friends============================== -->
+    <div id="tab_friends" class="col s12">
+      <ul class="collapsible" data-collapsible="accordion">
         {{#each model.userInsession.friends as |onrFriend|}}
-            <li>
-                <div class="collapsible-header">
-              <ul class="collection">
-                <li class="collection-item avatar">
-                <i class="material-icons circle red">person</i>
-                <span class="title">{{onrFriend.name}}</span>
-                <p class="caption red-text">
-                   You Owe: ${{onrFriend.balance}}
-                </p>
-                <a href="#!" class="secondary-content">Settle Up</a>
-              </li>
-              </ul>
-            </div>
-              </li>
-        {{/each}}
-          
-        </ul>
-      </div>
-
-
-      <!-- =====================Content: TAB Groups============================== -->
-      <div id="tab_groups" class="col s12">
-        <ul class="collapsible" data-collapsible="accordion">
           <li>
             <div class="collapsible-header">
               <ul class="collection">
                 <li class="collection-item avatar">
+                  <i class="material-icons circle red">person</i>
+                  <span class="title">{{onrFriend.name}}</span>
+                  <p class="caption red-text">
+                    You Owe: ${{onrFriend.balance}}
+                  </p>
+                  <a href="#!" class="secondary-content">Settle Up</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        {{/each}}
+
+      </ul>
+    </div>
+
+
+    <!-- =====================Content: TAB Groups============================== -->
+    <div id="tab_groups" class="col s12">
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
                 <i class="material-icons circle red">people</i>
                 <span class="title">Group 1</span>
                 <p class="caption">
-                   Owes You
+                  Owes You
                 </p>
                 <a href="#!" class="secondary-content"> Settle Up</a>
               </li>
-              </ul>
-            </div>
-            <div class="collapsible-body">
-              <ul class="collection">
-                <li class="collection-item avatar">
+            </ul>
+          </div>
+          <div class="collapsible-body">
+            <ul class="collection">
+              <li class="collection-item avatar">
                 <i class="material-icons circle black">directions_car</i>
                 <span class="title">Uber</span>
                 <p class="caption">
-                   Travel
+                  Travel
                 </p>
                 <a href="#!" class="secondary-content">Settled Up</a>
               </li>
-              </ul>
-              <ul class="collection">
-                <li class="collection-item avatar">
+            </ul>
+            <ul class="collection">
+              <li class="collection-item avatar">
                 <i class="material-icons circle red">store_mall_directory</i>
                 <span class="title">Target Shopping</span>
                 <p class="caption">
-                   Groceries
+                  Groceries
                 </p>
                 <a href="#!" class="secondary-content">Settled Up</a>
               </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="collapsible-header">
-              <ul class="collection">
-                <li class="collection-item avatar">
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
                 <i class="material-icons circle red">people</i>
                 <span class="title">Group 2</span>
                 <p class="caption">
-                   You Owe
+                  You Owe
                 </p>
                 <a href="#!" class="secondary-content">Settle Up</a>
               </li>
-              </ul>
-            </div>
-            <div class="collapsible-body">
+            </ul>
+          </div>
+          <div class="collapsible-body">
 
-            </div>
-          </li>
-          <li>
-            <div class="collapsible-header">
-              <ul class="collection">
-                <li class="collection-item avatar">
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header">
+            <ul class="collection">
+              <li class="collection-item avatar">
                 <i class="material-icons circle red">people</i>
                 <span class="title">Group 3</span>
                 <p class="caption">
-                   Settled
+                  Settled
                 </p>
                 <a href="#!" class="secondary-content">Settled</a>
               </li>
-              </ul>
-            </div>
-            <div class="collapsible-body">
+            </ul>
+          </div>
+          <div class="collapsible-body">
 
-            </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+      </ul>
+    </div>
 
 
-      <!-- =====================Content: TAB Activity============================== -->
-      <div id="tab_activity" class="col s12">
-        <ul class="collection">
+    <!-- =====================Content: TAB Activity============================== -->
+    <div id="tab_activity" class="col s12">
+      <ul class="collection">
         {{#each model.expenses as |onrExpence|}}
-           <li class="collection-item">
-             <i class="material-icons circle">local_drink</i>
-             <b>{{onrExpence.paidBy}}</b> Added <b>{{onrExpence.description}}</b>
-             <p class="caption green-text"> {{onrExpence.paidBy}} get back ${{onrExpence.getBack}}</p>
-           </li>
-       {{/each}}
-     </ul>
-      </div>
+          <li class="collection-item">
+            <i class="material-icons circle">local_drink</i>
+            <b>{{onrExpence.paidBy}}</b> Added <b>{{onrExpence.description}}</b>
+            <p class="caption green-text"> {{onrExpence.paidBy}} get back ${{onrExpence.getBack}}</p>
+          </li>
+        {{/each}}
+      </ul>
     </div>
   </div>
-  
-   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="splitwise-app/js/init.js"></script>
+</div>
 
-  <script type="text/javascript">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="splitwise-app/js/init.js"></script>
+
+<script type="text/javascript">
   // MOBILE MENU TRIGGER
-    $(".button-collapse").sideNav();
-    // Modal Trigger
-    $(document).ready(function() {
-      $('.modal').modal();
-    });
-// Tab Trigger
-    $(document).ready(function(){
+  $(".button-collapse").sideNav();
+  // Modal Trigger
+  $(document).ready(function() {
+    $('.modal').modal();
+  });
+  // Tab Trigger
+  $(document).ready(function() {
     $('ul.tabs').tabs();
   });
 
-// Select Menu Trigger
-    $(document).ready(function() {
+  // Select Menu Trigger
+  $(document).ready(function() {
     $('select').material_select();
   });
 
-// Chips Trigger
-    $('.chips').material_chip();
-    $('.chips-autocomplete').material_chip({
-      autocompleteOptions: {
-        data: {
-          'User1': null,
-          'User2': null,
-          'User3': null
-        },
-        limit: Infinity,
-        minLength: 1
-      }
-    });
-  </script>
+  // Chips Trigger
+  $('.chips').material_chip();
+  $('.chips-autocomplete').material_chip({
+    autocompleteOptions: {
+      data: {
+        'User1': null,
+        'User2': null,
+        'User3': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
+</script>

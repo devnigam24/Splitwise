@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    friendObject: {
+  friendObject: {
     'name': '',
     'email': ''
   },
@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     checkForFriendEmail() {
       this.friendObject.email = this.get('friendEmail');
     },
-    addFriendInDb(){
+    addFriendInDb() {
       this.send('saveFriend', this.friendObject);
     }
   }

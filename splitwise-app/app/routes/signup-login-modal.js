@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   init() {
     this._super(...arguments);
-    console.log('Modal aa gaya');
   },
   actions: {
     checkLoginCredentials(userLoginObject) {
@@ -22,7 +21,7 @@ export default Ember.Route.extend({
         if (data.includes(userLoginObject.userEmail)) {
           classThis.send('checkForPassword', userLoginObject);
         } else {
-          console.log('Wrong User');
+          alert('Wrong User');
         }
       });
     },
@@ -42,7 +41,7 @@ export default Ember.Route.extend({
       var _this = this;
       promise.then(function(data) {
         if (data[userLoginObject.userEmail] === userLoginObject.userPassword) {
-          console.log('authenticated User');               
+          console.log('authenticated User');
           var setUserInSessionPromise = new Ember.RSVP.Promise(function(resolve, reject) {
             Ember.$.post('/setUserInSession',userLoginObject).then(data => {
               if (data) {
@@ -57,7 +56,7 @@ export default Ember.Route.extend({
             _this.transitionTo('user-dashboard');
           });
         } else {
-          console.log('Wrong User');
+          alert('Wrong User');
         }
       });
     },
@@ -72,8 +71,8 @@ export default Ember.Route.extend({
           }
         });
       });
-      saveUserIntoDBPromise.then(function(data) {
-        console.log('saveUserIntoDBPromise' + data);
+      saveUserIntoDBPromise.then(function() {
+        alert('user saved');
         _this.transitionTo('user-dashboard');
       });
     }

@@ -1,33 +1,31 @@
 {{more-options}}
 <div id="modal_person" class="modal">
-    <div id="" class="modal-content">
-      <div class="input_fields_wrap">
-        <div class="row">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">account_box</i>
-            {{input name="appFriend" type="text" class="validate" value=appFriend change=(action 'checkForFriendName')}}
-            <label for="add_p">Name</label>
-          </div>
-
-          <div class="input-field col s6">
-            <i class="material-icons prefix">mail</i>
-            {{input name="friendEmail" type="email" class="validate" value=friendEmail change=(action 'checkForFriendEmail')}}
-            <input id="add_pmail" type="email" class="validate">
-            <label for="add_pmail">Email</label>
-          </div>
+  <div id="" class="modal-content">
+    <div class="input_fields_wrap">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_box</i> {{input name="appFriend" type="text" class="validate" value=appFriend change=(action 'checkForFriendName')}}
+          <label for="add_p">Name</label>
         </div>
 
-        <div class="row">
-        <button id="add_field_button" class=" waves-effect waves-light btn-floating btn-flat right red"><i class="material-icons right ">add</i></button>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mail</i> {{input name="friendEmail" type="email" class="validate" value=friendEmail change=(action 'checkForFriendEmail')}}
+          <input id="add_pmail" type="email" class="validate">
+          <label for="add_pmail">Email</label>
         </div>
       </div>
 
+      <div class="row">
+        <button id="add_field_button" class=" waves-effect waves-light btn-floating btn-flat right red"><i class="material-icons right ">add</i></button>
+      </div>
     </div>
-    <div class="modal-footer">
-      <a {{action "addFriendInDb" userSignUpObject}} class="modal-action modal-close waves-effect waves-green btn-flat ">Add Persons</a>
-    </div>
+
   </div>
-  <script>
+  <div class="modal-footer">
+    <a {{action "addFriendInDb" userSignUpObject}} class="modal-action modal-close waves-effect waves-green btn-flat ">Add Persons</a>
+  </div>
+</div>
+<script>
   $(document).ready(function() {
     $('.modal').modal();
     $('.modal').fadeIn(3000);

@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    billObject: {
+  billObject: {
     'description': '',
     'amount': '',
-    'friends':[],
-    'getBack':''
+    'friends': [],
+    'getBack': ''
   },
   actions: {
     fetchDescription() {
@@ -14,18 +14,18 @@ export default Ember.Controller.extend({
     fetchAmount() {
       this.billObject.amount = this.get('amount');
     },
-    fetchFriends(){
+    fetchFriends() {
       var friendsArray = [];
-      $('input[type="text"]').each(function(){
-        if($(this).attr('class') === 'select-dropdown active'){
-            friendsArray = this.value.split(' ');
+      $('input[type="text"]').each(function() {
+        if ($(this).attr('class') === 'select-dropdown active') {
+          friendsArray = this.value.split(' ');
         }
       });
       this.billObject.friends = friendsArray;
     },
-    save(){
-        this.billObject.getBack = ((parseInt(this.billObject.amount) / (this.billObject.friends.length + 1)) * this.billObject.friends.push.length).toString();
-        this.send('saveBill', this.billObject);
+    save() {
+      this.billObject.getBack = ((parseInt(this.billObject.amount) / (this.billObject.friends.length + 1)) * this.billObject.friends.push.length).toString();
+      this.send('saveBill', this.billObject);
     }
   }
 });
