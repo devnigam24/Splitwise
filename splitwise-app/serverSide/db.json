@@ -1,17 +1,77 @@
 {
   "allUsersEmailAndPwd": [
     {
-      "id": "k",
-      "k": "k"
+      "id": "devnigam@gmail.com",
+      "devnigam@gmail.com": "devnigam"
+    },
+    {
+      "id": "nehatambe@gmail.com",
+      "nehatambe@gmail.com": "nehatambe"
+    },
+    {
+      "a": "a",
+      "id": "a"
+    },
+    {
+      "id": "marutiram@gmail.com",
+      "marutiram@gmail.com": "marutiram"
     }
   ],
   "allRegisteredUserObjects": [
     {
-      "id": "k",
-      "firstName": "k",
-      "lastName": "k",
-      "userEmail": "k",
+      "id": "devnigam@gmail.com",
+      "firstName": "Dev",
+      "lastName": "Nigam",
+      "userEmail": "devnigam@gmail.com",
       "friends": [],
+      "groups": []
+    },
+    {
+      "id": "nehatambe@gmail.com",
+      "firstName": "Neha",
+      "lastName": "Tambe",
+      "userEmail": "nehatambe@gmail.com",
+      "friends": [],
+      "groups": []
+    },
+    {
+      "id": "marutiram@gmail.com",
+      "firstName": "Maruti",
+      "lastName": "Ram",
+      "userEmail": "marutiram@gmail.com",
+      "friends": [],
+      "groups": []
+    },
+    {
+      "id": "devnigam24@gmail.com",
+      "firstName": "Dev24",
+      "lastName": "Nigam24",
+      "userEmail": "devnigam24@gmail.com",
+      "friends": [],
+      "groups": []
+    },
+    {
+      "id": "a",
+      "firstName": "a",
+      "lastName": "a",
+      "userEmail": "a",
+      "friends": [
+        {
+          "name": "q",
+          "emailId": "q",
+          "balance": "0"
+        },
+        {
+          "name": "w",
+          "emailId": "w",
+          "balance": "0"
+        },
+        {
+          "name": "e",
+          "emailId": "e",
+          "balance": "0"
+        }
+      ],
       "groups": []
     }
   ],

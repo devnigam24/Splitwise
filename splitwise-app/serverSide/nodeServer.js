@@ -1,3 +1,4 @@
+'use strict'
 var express = require("express");
 var app = express();
 var bodyparser = require("body-parser");
@@ -32,7 +33,7 @@ app.get('/allRegisteredUserObjects', function(req, res) {
 });
 
 app.get('/allUsersEmailAndPwd', function(req, res) {
-  client.get(host + req.url.substring(0,req.url.indexOf('?')) + '/' + req.query.emailAsId, function(data) {
+  client.get(host + req.url.substring(0, req.url.indexOf('?')) + '/' + req.query.emailAsId, function(data) {
     res.send(data);
   });
 });
@@ -102,25 +103,46 @@ app.post('/postOneRegisteredUserObjects', function(req, res) {
 });
 
 app.post('/addFriendIntoList', function(req, res) {
-
-  var friendObject = {
-    'name': req.body.name,
-    'emailId': req.body.email,
-    'balance': '0'
-  }
-
-  client.get(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(dataObj) {
-    dataObj.friends.push(friendObject);
-    client.delete(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(data) {});
-    var args = {
-      data: dataObj,
-      headers: {
-        "Content-Type": "application/json"
+  var objToInsertInDb = {};
+  var addFriendPromise = new Promise(function(resolve, reject) {
+    client.get(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(dataObj) {
+      var friendObject = {
+        'name': req.body.name,
+        'emailId': req.body.email,
+        'balance': '0'
       }
-    };
-    client.post(host + "/allRegisteredUserObjects", args, function(data) {
-      userInSessionObject = data;
-      res.send(dataObj);
+      dataObj.friends.push(friendObject);
+
+      resolve(dataObj);
+      reject(dataObj);
+    });
+  });
+
+  addFriendPromise.then(function(data) {
+    objToInsertInDb = data;
+    var deleteRecordPromise = new Promise(function(resolve, reject) {
+      client.delete(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, (data) => {
+        resolve(data);
+        reject(data);
+      });
+    });
+    deleteRecordPromise.then(() => {
+      var args = {
+        data: objToInsertInDb,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      var insertRecordPromise = new Promise(function(resolve, reject) {
+        client.post(host + "/allRegisteredUserObjects", args, function(data) {
+          resolve(data);
+          reject(data)
+        });
+      });
+      insertRecordPromise.then((data) =>{
+        userInSessionObject = data;
+        res.send(data);
+      });
     });
   });
 });
