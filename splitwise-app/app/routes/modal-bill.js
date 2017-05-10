@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   },
   actions: {
     saveBill(billObj) {
-      alert('aaya');
+
       var addbillObj = new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.post('/addBillIntoList', billObj).then(data => {
           if (data) {
@@ -18,7 +18,7 @@ export default Ember.Route.extend({
       });
       var _this = this;
       addbillObj.then(function(data) {
-        alert(data);
+        
         _this.transitionTo('user-dashboard');
       });
     }

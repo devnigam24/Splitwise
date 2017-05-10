@@ -1,4 +1,3 @@
-"use strict";
 var express = require("express");
 var app = express();
 var bodyparser = require("body-parser");
@@ -33,7 +32,7 @@ app.get('/allRegisteredUserObjects', function(req, res) {
 });
 
 app.get('/allUsersEmailAndPwd', function(req, res) {
-  client.get(host + req.url, function(data) {
+  client.get(host + req.url.substring(0,req.url.indexOf('?')) + '/' + req.query.emailAsId, function(data) {
     res.send(data);
   });
 });
@@ -45,7 +44,6 @@ app.get('/getFriends', function(req, res) {
 });
 
 app.get('/getAllExpenses', function(req, res) {
-  console.log(host + '/expenses');
   client.get(host + '/expenses', function(data) {
     res.send(data);
   });
@@ -63,7 +61,7 @@ app.get('/getUserInSession', function(req, res) {
 });
 
 app.post('/setUserInSession', function(req, res) {
-  console.log("req.body" + host + "/allRegisteredUserObjects/" + req.body.userEmail);
+  console.log('setUserInSession');
   client.get(host + "/allRegisteredUserObjects/" + req.body.userEmail, function(data) {
     userInSessionObject = data;
     res.send(data);
@@ -72,13 +70,12 @@ app.post('/setUserInSession', function(req, res) {
 
 app.post('/postOneRegisteredUserObjects', function(req, res) {
   userInSessionObject = {
+    'id': req.body.userEmail,
     'firstName': req.body.firstName,
     'lastName': req.body.lastName,
     'userEmail': req.body.userEmail,
-    'userPassword': req.body.userPassword,
     'friends': [],
-    'id': req.body.userEmail,
-    'balance': '0'
+    'groups': []
   }
 
   var args = {
@@ -88,13 +85,24 @@ app.post('/postOneRegisteredUserObjects', function(req, res) {
     }
   };
 
-  client.post(host + "/allRegisteredUserObjects", args, function(data) {
-    res.send(data);
+  client.post(host + "/allRegisteredUserObjects", args, () => {
+    var args1 = {
+      data: {
+        'id': userInSessionObject.userEmail,
+        [userInSessionObject.userEmail]: req.body.userPassword
+      },
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    client.post(host + "/allUsersEmailAndPwd", args1, (data) => {
+      res.send(data);
+    });
   });
 });
 
 app.post('/addFriendIntoList', function(req, res) {
-  console.log('aaya');
+
   var friendObject = {
     'name': req.body.name,
     'emailId': req.body.email,
@@ -102,9 +110,7 @@ app.post('/addFriendIntoList', function(req, res) {
   }
 
   client.get(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(dataObj) {
-    console.log(dataObj);
     dataObj.friends.push(friendObject);
-    console.log(dataObj);
     client.delete(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(data) {});
     var args = {
       data: dataObj,

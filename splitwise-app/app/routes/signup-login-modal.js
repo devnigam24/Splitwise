@@ -6,9 +6,9 @@ export default Ember.Route.extend({
   },
   actions: {
     checkLoginCredentials(userLoginObject) {
-      var classThis = this;
+      var _this = this;
       var allUsersEmailPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON('/allUsersEmailArray').then(data => {
+        Ember.$.getJSON('/allUsersEmailAndPwd?emailAsId=' + userLoginObject.userEmail).then(data => {
           if (data) {
             resolve(data);
           } else {
@@ -18,45 +18,9 @@ export default Ember.Route.extend({
       });
 
       allUsersEmailPromise.then(function(data) {
-        if (data.includes(userLoginObject.userEmail)) {
-          classThis.send('checkForPassword', userLoginObject);
-        } else {
-          alert('Wrong User');
-        }
-      });
-    },
-    checkForPassword(userLoginObject) {
-      var allUsersAuthPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON('/allUsersEmailAndPwd').then(data => {
-          if (data) {
-            resolve(data);
-          } else {
-            reject(data);
-          }
-        });
-      });
-      this.send('authenticateUser', allUsersAuthPromise, userLoginObject);
-    },
-    authenticateUser(promise, userLoginObject) {
-      var _this = this;
-      promise.then(function(data) {
         if (data[userLoginObject.userEmail] === userLoginObject.userPassword) {
-          console.log('authenticated User');
-          var setUserInSessionPromise = new Ember.RSVP.Promise(function(resolve, reject) {
-            Ember.$.post('/setUserInSession',userLoginObject).then(data => {
-              if (data) {
-                resolve(data);
-              } else {
-                reject(data);
-              }
-            });
-          });
-          setUserInSessionPromise.then(function(data) {
-            console.log('saveUserIntoDBPromise' + data);
-            _this.transitionTo('user-dashboard');
-          });
-        } else {
-          alert('Wrong User');
+          Ember.$.post('/setUserInSession', userLoginObject)
+          _this.transitionTo('user-dashboard');
         }
       });
     },
@@ -72,7 +36,6 @@ export default Ember.Route.extend({
         });
       });
       saveUserIntoDBPromise.then(function() {
-        alert('user saved');
         _this.transitionTo('user-dashboard');
       });
     }

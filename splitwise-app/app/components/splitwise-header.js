@@ -24,7 +24,6 @@ export default Ember.Component.extend({
   },
   actions: {
     logOut() {
-      console.log('logout');
       var logoutPromise = new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.getJSON('/logout').then(data => {
           if (data) {

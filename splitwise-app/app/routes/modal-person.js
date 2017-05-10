@@ -14,7 +14,7 @@ export default Ember.Route.extend({
       });
       var _this = this;
       addFriendIntoList.then(function(data) {
-        alert(data);
+        
         _this.transitionTo('user-dashboard');
       });
     }

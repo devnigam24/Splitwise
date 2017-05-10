@@ -1,100 +1,20 @@
 {
-  "allUsersEmailArray": [
-    "neha@gmail.com",
-    "devnigam24@test.com",
-    "sanika@sanika.com",
-    "maruti@gmail.com"
-  ],
-  "allUsersEmailAndPwd": {
-    "neha@gmail.com": "neha",
-    "devnigam24@test.com": "dev",
-    "sanika@sanika.com": "sanika",
-    "maruti@gmail.com": "maruti"
-  },
-  "expenses": [
+  "allUsersEmailAndPwd": [
     {
-      "description": "Gas Mobil",
-      "amount": "50",
-      "friends": [
-        "neha@gmail.com"
-      ]
-    },
-    {
-      "paidBy": "maruti@gmail.com",
-      "description": "Phone Bill",
-      "amount": "60",
-      "getBack": "20",
-      "id": "maruti@gmail.comPhone Bill"
+      "id": "k",
+      "k": "k"
     }
   ],
   "allRegisteredUserObjects": [
     {
-      "firstName": "neha",
-      "lastName": "Tambe",
-      "userEmail": "neha@gmail.com",
-      "userPassword": "neha",
-      "id": "neha@gmail.com",
-      "friends": []
-    },
-    {
-      "firstName": "dev",
-      "lastName": "nigam",
-      "userEmail": "devnigam24@test.com",
-      "userPassword": "dev",
-      "id": "devnigam24@test.com",
-      "friends": []
-    },
-    {
-      "firstName": "sanika",
-      "lastName": "sanika",
-      "userEmail": "sanika@sanika.com",
-      "userPassword": "sanika",
-      "id": "sanika@sanika.com",
-      "friends": [
-        {
-          "name": "dev",
-          "emailId": "devnigam24@test.com",
-          "balance": "0"
-        }
-      ]
-    },
-    {
-      "firstName": "jhon",
-      "lastName": "jhon",
-      "userEmail": "jhon@jhon.com",
-      "userPassword": "jhon",
+      "id": "k",
+      "firstName": "k",
+      "lastName": "k",
+      "userEmail": "k",
       "friends": [],
-      "id": "jhon@jhon.com",
-      "balance": "0"
-    },
-    {
-      "firstName": "Maruti",
-      "lastName": "Maruti",
-      "userEmail": "maruti@gmail.com",
-      "userPassword": "maruti",
-      "friends": [
-        {
-          "name": "Dev",
-          "emailId": "devnigam24@test.com",
-          "balance": "0"
-        },
-        {
-          "name": "Neha",
-          "emailId": "neha@gmail.com",
-          "balance": "0"
-        },
-        {
-          "name": "Sanika",
-          "emailId": "sanika@sanika.com",
-          "balance": "0"
-        },
-        {
-          "name": "Jeremy",
-          "emailId": "Jeremy@gmail.com",
-          "balance": "0"
-        }
-      ],
-      "id": "maruti@gmail.com"
+      "groups": []
     }
-  ]
+  ],
+  "expenses": [],
+  "groups": []
 }
