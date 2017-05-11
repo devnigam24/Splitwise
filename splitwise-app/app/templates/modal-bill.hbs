@@ -8,14 +8,14 @@
           <li class="tab col s6"><a href="#test2">Group <i class="material-icons" style="position: relative; top: 5px;">people</i></a></li>
         </ul>
       </div>
-      
+
 <!-- ======================Modal: Individual Tab=============================== -->
       <div class="modal-content custom-pad">
         <div id="test1" class="col s12">
           <div class="row">
             <br>
             <div class="input-field col s10">
-            <select multiple onchange={{action "fetchFriends" value="value"}} >    
+            <select multiple onchange={{action "fetchFriends"}} >    
               {{#each model.friends as |onrFriend|}}
               <option value="{{onrFriend.emailId}}">{{onrFriend.name}}</option>
               {{/each}}

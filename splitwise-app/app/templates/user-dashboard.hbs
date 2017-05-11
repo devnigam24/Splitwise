@@ -118,6 +118,9 @@
             <i class="material-icons circle">local_drink</i>
             <b>{{onrExpence.paidBy}}</b> Added <b>{{onrExpence.description}}</b>
             <p class="caption green-text"> {{onrExpence.paidBy}} get back ${{onrExpence.getBack}}</p>
+            {{#each model.expenses.friends as |onrFriend|}}
+              <p class="caption green-text">{{onrFriend}}</p>
+            {{/each}}
           </li>
         {{/each}}
       </ul>

@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   billObject: {
     'description': '',
-    'amount': '',
-    'friends': [],
+    'totalAmount': '',
+    'paidInBetween': [],
     'getBack': ''
   },
   actions: {
@@ -12,20 +12,24 @@ export default Ember.Controller.extend({
       this.billObject.description = this.get('description');
     },
     fetchAmount() {
-      this.billObject.amount = this.get('amount');
+      this.billObject.totalAmount = this.get('amount');
     },
     fetchFriends() {
       var friendsArray = [];
-      $('input[type="text"]').each(function() {
-        if ($(this).attr('class') === 'select-dropdown active') {
+      Ember.$('input[type="text"]').each(function() {
+        if (Ember.$(this).attr('class') === 'select-dropdown active') {
           friendsArray = this.value.split(' ');
         }
       });
-      this.billObject.friends = friendsArray;
+      this.billObject.paidInBetween = friendsArray;
     },
     save() {
-      this.billObject.getBack = ((parseInt(this.billObject.amount) / (this.billObject.friends.length + 1)) * this.billObject.friends.push.length).toString();
-      this.send('saveBill', this.billObject);
+      this.billObject.getBack =
+        ((parseInt(this.billObject.totalAmount) /
+        (this.billObject.paidInBetween.length + 1)) *
+        this.billObject.paidInBetween.length).toString();
+        console.log('this'+this.billObject);
+        this.send('saveBill', this.billObject);
     }
   }
 });

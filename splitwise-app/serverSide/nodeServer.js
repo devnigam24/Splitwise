@@ -62,7 +62,6 @@ app.get('/getUserInSession', function(req, res) {
 });
 
 app.post('/setUserInSession', function(req, res) {
-  console.log('setUserInSession');
   client.get(host + "/allRegisteredUserObjects/" + req.body.userEmail, function(data) {
     userInSessionObject = data;
     res.send(data);
@@ -151,10 +150,10 @@ app.post('/addBillIntoList', function(req, res) {
   var billObject = {
     'paidBy': userInSessionObject.firstName,
     'description': req.body.description,
-    'amount': req.body.amount,
-    'friends': req.body.friends,
+    'amount': req.body.totalAmount,
+    'paidInBetween': req.body.paidInBetween,
     'getBack': req.body.getBack,
-    'id': userInSessionObject.firstName + req.body.description
+    'id': encodeURIComponent(userInSessionObject.firstName + '-' + req.body.description)
   };
 
   var args = {
@@ -163,6 +162,7 @@ app.post('/addBillIntoList', function(req, res) {
       "Content-Type": "application/json"
     }
   };
+  console.log(args);
   client.post(host + "/expenses", args, function(data) {
     res.send(data);
   });

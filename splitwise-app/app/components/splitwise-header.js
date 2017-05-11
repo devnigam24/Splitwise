@@ -33,8 +33,7 @@ export default Ember.Component.extend({
           }
         });
       });
-      var _this = this;
-      logoutPromise.then(function(data) {
+      logoutPromise.then(() => {
         window.location.href = "http://localhost:4200";
       });
     }
