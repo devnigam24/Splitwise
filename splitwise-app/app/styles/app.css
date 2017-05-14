@@ -2,6 +2,10 @@
   float: left;
 }
 
+.block{
+  display: block !important;
+}
+
 .page-footer {
   position: fixed;
   height: 5em;
@@ -20,10 +24,10 @@
   margin-top: 0px;
 }
 
-.container {
-  margin: 5em auto;
-  position: relative;
+.mySection {
+  margin-top: 6em;
   width: 80%;
+  position: fixed;
 }
 
 .marginRight2 {
@@ -33,4 +37,8 @@
 .moreOptionDiv {
   margin-bottom: 10em;
   margin-right: 2em;
+}
+
+.card-section{
+  padding: 12px 16px;
 }

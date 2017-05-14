@@ -1,6 +1,6 @@
 <nav class="myHeader red z-depth-2" role="navigation">
   <div class="nav-wrapper"><a id="logo-container" href="/" class="brand-logo">Splitwise</a>
-    <ul class="right hide-on-med-and-down">
+    <ul class="right">
       {{#if userInSession.userEmail}}
         <li>
           <a class="dropdown-button waves-effect btn-flat white-text" href="#" onclick="openDropDown()" data-activates="dropdown1">{{userInSession.firstName}} {{userInSession.lastName}}
@@ -17,11 +17,6 @@
           <i class="material-icons right">people</i></a></li>
       {{/if}}
     </ul>
-
-    <ul id="nav-mobile" class="side-nav">
-      <li><a class="waves-effect waves-teal btn-flat red">Login/SignUp</a></li>
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>
 </nav>
 

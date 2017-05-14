@@ -14,6 +14,9 @@ export default Ember.Controller.extend({
     },
     addFriendInDb() {
       this.send('saveFriend', this.friendObject);
+    },
+    fetchGroupName(){
+      
     }
   }
 });

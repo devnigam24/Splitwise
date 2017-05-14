@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  init() {
-    this._super(...arguments);
-  },
   actions: {
     checkLoginCredentials(userLoginObject) {
       var _this = this;
@@ -19,8 +16,10 @@ export default Ember.Route.extend({
 
       allUsersEmailPromise.then(function(data) {
         if (data[userLoginObject.userEmail] === userLoginObject.userPassword) {
-          Ember.$.post('/setUserInSession', userLoginObject)
-          _this.transitionTo('user-dashboard');
+          Ember.$.post('/setUserInSession', userLoginObject).then((data) => {
+            console.log('Authorized'+data);
+            _this.transitionTo('user-dashboard');
+          });
         }
       });
     },
@@ -35,7 +34,8 @@ export default Ember.Route.extend({
           }
         });
       });
-      saveUserIntoDBPromise.then(function() {
+      saveUserIntoDBPromise.then(function(data) {
+        console.log('User created'+data);
         _this.transitionTo('user-dashboard');
       });
     }

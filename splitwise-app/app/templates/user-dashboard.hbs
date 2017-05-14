@@ -1,5 +1,4 @@
 {{more-options}}
-
 <div class="container">
   <div class="row">
     <div class="col s12 no-pad_c">
@@ -9,10 +8,9 @@
         <li class="tab col s3"><a href="#tab_activity">Activity</a></li>
       </ul>
     </div>
-    <!-- =====================Content: TAB Friends============================== -->
     <div id="tab_friends" class="col s12">
       <ul class="collapsible" data-collapsible="accordion">
-        {{#each model.userInsession.friends as |onrFriend|}}
+        {{#each model.userFriends as |onrFriend|}}
           <li>
             <div class="collapsible-header">
               <ul class="collection">
@@ -28,12 +26,8 @@
             </div>
           </li>
         {{/each}}
-
       </ul>
     </div>
-
-
-    <!-- =====================Content: TAB Groups============================== -->
     <div id="tab_groups" class="col s12">
       <ul class="collapsible" data-collapsible="accordion">
         <li>
@@ -86,7 +80,6 @@
             </ul>
           </div>
           <div class="collapsible-body">
-
           </div>
         </li>
         <li>
@@ -103,14 +96,10 @@
             </ul>
           </div>
           <div class="collapsible-body">
-
           </div>
         </li>
       </ul>
     </div>
-
-
-    <!-- =====================Content: TAB Activity============================== -->
     <div id="tab_activity" class="col s12">
       <ul class="collection">
         {{#each model.expenses as |onrExpence|}}
@@ -127,37 +116,5 @@
     </div>
   </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
 <script type="text/javascript">
-  // MOBILE MENU TRIGGER
-  $(".button-collapse").sideNav();
-  // Modal Trigger
-  $(document).ready(function() {
-    $('.modal').modal();
-  });
-  // Tab Trigger
-  $(document).ready(function() {
-    $('ul.tabs').tabs();
-  });
-
-  // Select Menu Trigger
-  $(document).ready(function() {
-    $('select').material_select();
-  });
-
-  // Chips Trigger
-  $('.chips').material_chip();
-  $('.chips-autocomplete').material_chip({
-    autocompleteOptions: {
-      data: {
-        'User1': null,
-        'User2': null,
-        'User3': null
-      },
-      limit: Infinity,
-      minLength: 1
-    }
-  });
 </script>

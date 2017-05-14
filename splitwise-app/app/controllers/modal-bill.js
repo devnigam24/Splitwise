@@ -7,6 +7,12 @@ export default Ember.Controller.extend({
     'paidInBetween': [],
     'getBack': ''
   },
+  groupBillObject: {
+    'description': '',
+    'totalAmount': '',
+    'groupName': '',
+    'getBack': ''
+  },
   actions: {
     fetchDescription() {
       this.billObject.description = this.get('description');
@@ -18,18 +24,27 @@ export default Ember.Controller.extend({
       var friendsArray = [];
       Ember.$('input[type="text"]').each(function() {
         if (Ember.$(this).attr('class') === 'select-dropdown active') {
-          friendsArray = this.value.split(' ');
+          friendsArray = this.value.split(', ');
         }
       });
-      this.billObject.paidInBetween = friendsArray;
+      this.billObject.paidInBetween = JSON.stringify(friendsArray);
     },
     save() {
       this.billObject.getBack =
         ((parseInt(this.billObject.totalAmount) /
-        (this.billObject.paidInBetween.length + 1)) *
-        this.billObject.paidInBetween.length).toString();
+        (JSON.parse(this.billObject.paidInBetween).length + 1)) *
+        JSON.parse(this.billObject.paidInBetween).length).toString();
         console.log('this'+this.billObject);
         this.send('saveBill', this.billObject);
+    },
+    fetchGroupName(){
+
+    },
+    fetchGroupDescription(){
+
+    },
+    fetchGroupAmont(){
+
     }
   }
 });

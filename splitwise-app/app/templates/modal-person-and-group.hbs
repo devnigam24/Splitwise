@@ -1,0 +1,66 @@
+{{more-options}}
+<div class="row">
+  <div class="section no-pad-bot z-depth-2">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card white ">
+          <div class="card-section blue-grey darken-2">
+            <span class="card-title white-text">&bull; Add a Group &bull;</span>
+          </div>
+          <div class="card-content">
+
+            <!-- ======================1.2: Form============================ -->
+            <div class="row">
+              <span class="card-title"><i class="material-icons">account_circle</i>Group Details:</span>
+              <br>
+              <form class="container">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">people</i> {{input id="gName" name="gName" class="validate" type="text" value=gName change=(action 'fetchGroupName')}}
+                  <label class="active" for="first_name">Group Name</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">people</i>
+                  <select multiple>
+                    <option value="" disabled selected>Select</option>
+                    <option value="1">User 1</option> <!-- Dont forget to change values too-->
+                    <option value="2">User 2</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card-action right-align grey lighten-1">
+            <a class="waves-effect waves-light btn teal darken-1">Add Group<i class="material-icons right">group_add</i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card white ">
+          <div class="card-section blue-grey darken-2">
+            <span class="card-title white-text">&bull; Add a Friend &bull;</span>
+          </div>
+          <div class="card-content">
+            <div class="row">
+              <span class="card-title"><i class="material-icons">account_circle</i>Friend Details:</span>
+              <br>
+              <form class="container">
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">person_add</i> {{input name="friendEmail" type="email" class="validate" value=friendEmail change=(action 'checkForFriendEmail')}}
+                  <label class="active" for="r_mail">Email</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  {{input name="appFriend" type="text" class="validate" value=appFriend change=(action 'checkForFriendName')}}
+                  <label class="active" for="">Name</label>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card-action right-align grey lighten-1">
+            <a type="button" {{action "addFriendInDb" friendObject}} class="waves-effect waves-light btn teal darken-1">
+            Add Friend(s)<i class="material-icons right">person_add</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

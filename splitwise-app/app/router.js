@@ -10,8 +10,7 @@ Router.map(function() {
   this.route('signup-login-modal');
   this.route('user-dashboard');
   this.route('modal-bill');
-  this.route('modal-person');
-  this.route('modal-group');
+  this.route('modal-person-and-group');
   this.route('log-out');
 });
 

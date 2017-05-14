@@ -26,6 +26,25 @@ app.get('/allUsersEmailArray', function(req, res) {
   });
 });
 
+app.get('/getCategoryJson', function(req, res) {
+  client.get('https://secure.splitwise.com/api/v3.0/get_categories', function(catJson) {
+    var returnArray = [];
+    catJson.categories.forEach((d) => {
+      var otherName = d.name;
+      d.subcategories.forEach((e) => {
+        if (e.name == 'Other') {
+          e.name = otherName + '/' + e.name;
+        }
+        var returnObj = {};
+        returnObj['name'] = e.name;
+        returnObj['icon'] = e.icon;
+        returnArray.push(returnObj);
+      });
+    });
+    res.send(returnArray);
+  });
+});
+
 app.get('/allRegisteredUserObjects', function(req, res) {
   client.get(host + req.url, function(data) {
     res.send(data);
@@ -40,7 +59,7 @@ app.get('/allUsersEmailAndPwd', function(req, res) {
 
 app.get('/getFriends', function(req, res) {
   client.get(host + '/allRegisteredUserObjects' + '/' + userInSessionObject.userEmail, function(data) {
-    res.send(data);
+    res.send(data.friends);
   });
 });
 
@@ -108,10 +127,10 @@ app.post('/addFriendIntoList', function(req, res) {
       var friendObject = {
         'name': req.body.name,
         'emailId': req.body.email,
-        'balance': '0'
+        'balance': '0',
+        'id': req.body.email
       }
       dataObj.friends.push(friendObject);
-
       resolve(dataObj);
       reject(dataObj);
     });
@@ -138,7 +157,7 @@ app.post('/addFriendIntoList', function(req, res) {
           reject(data)
         });
       });
-      insertRecordPromise.then((data) =>{
+      insertRecordPromise.then((data) => {
         userInSessionObject = data;
         res.send(data);
       });
@@ -153,20 +172,61 @@ app.post('/addBillIntoList', function(req, res) {
     'amount': req.body.totalAmount,
     'paidInBetween': req.body.paidInBetween,
     'getBack': req.body.getBack,
-    'id': encodeURIComponent(userInSessionObject.firstName + '-' + req.body.description)
+    'id': userInSessionObject.firstName + '-' + req.body.description.replace(" ", "-")
   };
-
+  console.log(billObject);
   var args = {
     data: billObject,
     headers: {
       "Content-Type": "application/json"
     }
   };
-  console.log(args);
   client.post(host + "/expenses", args, function(data) {
+    updateExpensecForThisFriend(billObject.paidInBetween, billObject.getBack);
     res.send(data);
   });
 });
+
+function updateExpensecForThisFriend(friendsToBeUpdatedArray, valueToUpdate) {
+  valueToUpdate = valueToUpdate / JSON.parse(friendsToBeUpdatedArray).length;
+  console.log(valueToUpdate);
+  client.get(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(data) {
+    [].slice.call(friendsToBeUpdatedArray).forEach((oneFriend) => {
+      [].slice.call(data.friends).forEach((obj) => {
+        if (obj.name == oneFriend) {
+          var oldObj = obj;
+          obj.balance = (parseInt(obj.balance) - parseInt(valueToUpdate)).toString();
+          [].slice.call(data.friends)[[].slice.call(data.friends).indexOf(oldObj)] = obj;
+        }
+      });
+    });
+    updateThisUserInDb(data);
+  });
+}
+
+function updateThisUserInDb(dataToUpdate) {
+  var deleteRecordPromise = new Promise(function(resolve, reject) {
+    client.delete(host + "/allRegisteredUserObjects/" + dataToUpdate.userEmail, (data) => {
+      resolve(data);
+      reject(data);
+    });
+  });
+  deleteRecordPromise.then((data) => {
+    console.log('old' + JSON.stringify(data));
+    console.log('Old object deleted');
+    var args = {
+      data: dataToUpdate,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    console.log(args);
+    client.post(host + "/allRegisteredUserObjects", args, (data) => {
+      console.log('new User Inserted');
+      console.log('new' + JSON.stringify(data));
+    });
+  });
+}
 
 http.createServer(app).listen(3000, function() {
   console.log('Server listening on port 3000');

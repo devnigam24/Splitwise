@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   userInSession: {},
-  init() {
-    this._super(...arguments);
-
-  },
   didInsertElement() {
     this._super(...arguments);
     var userInsessionPromise = new Ember.RSVP.Promise(function(resolve, reject) {

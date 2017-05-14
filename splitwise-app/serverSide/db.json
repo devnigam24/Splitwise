@@ -1,176 +1,77 @@
 {
   "allUsersEmailAndPwd": [
     {
-      "id": "devnigam@gmail.com",
-      "devnigam@gmail.com": "devnigam"
+      "id": "q",
+      "q": "q"
     },
     {
-      "id": "nehatambe@gmail.com",
-      "nehatambe@gmail.com": "nehatambe"
-    },
-    {
-      "a": "a",
-      "id": "a"
-    },
-    {
-      "id": "marutiram@gmail.com",
-      "marutiram@gmail.com": "marutiram"
+      "id": "w",
+      "w": "w"
     }
   ],
   "allRegisteredUserObjects": [
     {
-      "id": "devnigam@gmail.com",
-      "firstName": "Dev",
-      "lastName": "Nigam",
-      "userEmail": "devnigam@gmail.com",
-      "friends": [],
-      "groups": []
-    },
-    {
-      "id": "nehatambe@gmail.com",
-      "firstName": "Neha",
-      "lastName": "Tambe",
-      "userEmail": "nehatambe@gmail.com",
-      "friends": [],
-      "groups": []
-    },
-    {
-      "id": "marutiram@gmail.com",
-      "firstName": "Maruti",
-      "lastName": "Ram",
-      "userEmail": "marutiram@gmail.com",
-      "friends": [],
-      "groups": []
-    },
-    {
-      "id": "devnigam24@gmail.com",
-      "firstName": "Dev24",
-      "lastName": "Nigam24",
-      "userEmail": "devnigam24@gmail.com",
-      "friends": [],
-      "groups": []
-    },
-    {
-      "id": "a",
-      "firstName": "a",
-      "lastName": "a",
-      "userEmail": "a",
+      "id": "q",
+      "firstName": "q",
+      "lastName": "q",
+      "userEmail": "q",
       "friends": [
+        {
+          "name": "a",
+          "emailId": "a",
+          "balance": "-115",
+          "id": "a"
+        },
         {
           "name": "b",
           "emailId": "b",
-          "balance": "0"
-        },
+          "balance": "-115",
+          "id": "b"
+        }
+      ],
+      "groups": []
+    },
+    {
+      "id": "w",
+      "firstName": "w",
+      "lastName": "w",
+      "userEmail": "w",
+      "friends": [
         {
-          "name": "c",
-          "emailId": "c",
-          "balance": "0"
-        },
-        {
-          "name": "d",
-          "emailId": "d",
-          "balance": "0"
-        },
-        {
-          "name": "e",
-          "emailId": "e",
-          "balance": "0"
-        },
-        {
-          "name": "f",
-          "emailId": "f",
-          "balance": "0"
-        },
-        {
-          "name": "g",
-          "emailId": "g",
-          "balance": "0"
-        },
-        {
-          "name": "h",
-          "emailId": "h",
-          "balance": "0"
-        },
-        {
-          "name": "i",
-          "emailId": "i",
-          "balance": "0"
+          "name": "t",
+          "emailId": "t",
+          "balance": "0",
+          "id": "t"
         }
       ],
       "groups": []
     }
   ],
+  "groups": [],
   "expenses": [
     {
-      "paidBy": "a",
-      "description": "Phone bill",
-      "amount": "100",
-      "getBack": "25",
-      "id": "aPhone bill"
-    },
-    {
-      "paidBy": "a",
-      "description": "Gas Bill",
-      "amount": "100",
-      "getBack": "25",
-      "id": "aGas Bill"
-    },
-    {
-      "paidBy": "a",
-      "description": "Internet",
-      "amount": "100",
-      "getBack": "75",
-      "id": "aInternet"
-    },
-    {
-      "paidBy": "a",
-      "description": "Panda Express",
-      "amount": "100",
-      "getBack": "75",
-      "id": "a-Panda Express"
-    },
-    {
-      "paidBy": "a",
-      "description": "Electricity",
-      "amount": "120",
-      "getBack": "90",
-      "id": "a-Electricity"
-    },
-    {
-      "paidBy": "a",
-      "description": "10",
-      "amount": "10",
-      "getBack": "0",
-      "id": "a-10"
-    },
-    {
-      "paidBy": "a",
-      "description": "12",
-      "amount": "12",
-      "getBack": "9",
-      "id": "a-12"
-    },
-    {
-      "paidBy": "a",
-      "description": "5",
-      "amount": "5",
-      "getBack": "0",
-      "id": "a-5"
-    },
-    {
-      "paidBy": "a",
-      "description": "sddddddd",
-      "amount": "16",
-      "getBack": "0",
-      "id": "a-sddddddd"
-    },
-    {
-      "paidBy": "a",
+      "paidBy": "q",
       "description": "15",
       "amount": "15",
-      "getBack": "12",
-      "id": "a-15"
+      "paidInBetween": "[\"a\",\"b\"]",
+      "getBack": "10",
+      "id": "q-15"
+    },
+    {
+      "paidBy": "q",
+      "description": "300",
+      "amount": "300",
+      "paidInBetween": "[\"a\",\"b\"]",
+      "getBack": "200",
+      "id": "q-300"
+    },
+    {
+      "paidBy": "q",
+      "description": "45",
+      "amount": "45",
+      "paidInBetween": "[\"a\",\"b\"]",
+      "getBack": "30",
+      "id": "q-45"
     }
-  ],
-  "groups": []
+  ]
 }

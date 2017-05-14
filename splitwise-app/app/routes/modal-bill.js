@@ -3,21 +3,9 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     return Ember.RSVP.hash({
-
       firendsArray: Ember.$.getJSON('/getFriends'),
-      iconNameUrlObject: Ember.$.getJSON('https://secure.splitwise.com/api/v3.0/get_categories').success((objectObj) => {
-        objectObj.categories.forEach(function(oneObject) {
-          if (oneObject.subcategories !== undefined) {
-            oneObject.subcategories.forEach((oneSubCategory) => {
-              iconNameUrlObject[oneSubCategory.name] = oneSubCategory.icon;
-            });
-          }
-        });
-      })
+      iconNameUrlObject: Ember.$.getJSON('/getCategoryJson')
     });
-
-
-
   },
   actions: {
     saveBill(billObj) {
@@ -31,7 +19,8 @@ export default Ember.Route.extend({
         });
       });
       var _this = this;
-      addbillObj.then(function() {
+      addbillObj.then(function(d) {
+        console.log(d);
         _this.transitionTo('user-dashboard');
       });
     }
