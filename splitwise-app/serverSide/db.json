@@ -3,10 +3,6 @@
     {
       "id": "q",
       "q": "q"
-    },
-    {
-      "id": "w",
-      "w": "w"
     }
   ],
   "allRegisteredUserObjects": [
@@ -27,21 +23,6 @@
           "emailId": "b",
           "balance": "-115",
           "id": "b"
-        }
-      ],
-      "groups": []
-    },
-    {
-      "id": "w",
-      "firstName": "w",
-      "lastName": "w",
-      "userEmail": "w",
-      "friends": [
-        {
-          "name": "t",
-          "emailId": "t",
-          "balance": "0",
-          "id": "t"
         }
       ],
       "groups": []

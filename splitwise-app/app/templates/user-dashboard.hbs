@@ -1,4 +1,10 @@
 {{more-options}}
+<div>You have new notifictions. Click to mark it as seeen.. {{userInSession.userEmail}}
+  {{#each model.message as |message|}}
+    {{#if (equals model.userInSessionEmail message.userName)}}
+      <a href="#" {{action 'markAsSeen'}}>{{message.description}} was added by {{message.activityAddedBy}}</a>
+    {{/if}}
+  {{/each}}
 <div class="container">
   <div class="row">
     <div class="col s12 no-pad_c">
@@ -23,6 +29,9 @@
                   <a href="#!" class="secondary-content">Settle Up</a>
                 </li>
               </ul>
+            </div>
+            <div class="new-msg-form">
+              <button {{action 'addMessage'}} class="submit">Submit</button>
             </div>
           </li>
         {{/each}}

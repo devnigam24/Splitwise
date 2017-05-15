@@ -42,6 +42,8 @@
   },
   "private": true,
   "dependencies": {
-    "ember-inflector": "^2.0.0"
+    "ember-inflector": "^2.0.0",
+    "emberfire": "^2.0.7",
+    "firebase": "^3.9.0"
   }
 }
