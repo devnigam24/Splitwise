@@ -20,7 +20,14 @@ export default Ember.Route.extend({
       });
       var _this = this;
       addbillObj.then(function(d) {
-        console.log(d);
+        JSON.parse(d.paidInBetween).forEach((obj) => {
+          var newMessage = _this.store.createRecord('message', {
+            userName: obj,
+            activityAddedBy: d.paidBy,
+            description: d.description
+          });
+          newMessage.save();
+        });
         _this.transitionTo('user-dashboard');
       });
     }

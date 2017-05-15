@@ -8,19 +8,17 @@
             <span class="card-title white-text">&bull; Add a Bill &bull;</span>
           </div>
           <div class="card-content">
-
-            <!-- ======================1.2: Form============================ -->
             <div class="row">
-              <span class="card-title"><i class="material-icons">account_circle</i>Friend Details:</span>
+              <img class="col s3" width="50" id="billIconOne" height="100" src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square/home/other.png">
               <div class="row">
-                <br>
-                <div class="input-field col s10">
-                  <label>You and : </label>
-                  <select multiple class="block" onchange= {{action "fetchFriends"}}>
+                <span class="card-title col s7"><i class="material-icons">account_circle</i>Friend Details:</span>
+                <div class="input-field col s9">
+                  <select multiple onchange= {{action "fetchFriends"}}>
+                      <option disabled selected>Choose your Friends</option>
                       {{#each model.firendsArray as |onrFriend|}}
                         <option value="{{onrFriend.emailId}}">{{onrFriend.name}}</option>
                       {{/each}}
-                    </select>
+                  </select>
                 </div>
               </div>
               <div class="divider"></div>
@@ -36,7 +34,7 @@
               </div>
               <div class="input-field col s12">
                 <i class="material-icons prefix">people</i>
-                <select>
+                <select id="iconSelectOne" onchange= {{action "changeBillIcon"}}>
                   <option value="" disabled selected>Select</option>
                   {{#each model.iconNameUrlObject as |obj|}}
                   <option value={{obj.icon}}>{{obj.name}}</option>
@@ -60,25 +58,21 @@
           </div>
           <div class="card-content">
             <div class="row">
-              <span class="card-title"><i class="material-icons">account_circle</i>Group Details:</span>
-              <br>
-              <form class="container">
+              <img class="col s3" width="50" height="100" src="https://s3.amazonaws.com/splitwise/uploads/category/icon/square/home/other.png">
                 <div class="row">
-                  <div class="input-field col s12">
-                    <i class="material-icons prefix">edit</i>
-                    {{input id="gname" name="gname" class="validate" type="text" value=gname change=(action 'fetchGroupName')}}
+                  <span class="card-title col s7"><i class="material-icons">account_circle</i>Group Details:</span>
+                  <div class="input-field col s9">
+                    <i class="material-icons prefix">edit</i> {{input id="gname" name="gname" class="validate" type="text" value=gname change=(action 'fetchGroupName')}}
                     <label for="description" data-error="Please enter a valid Group Name" data-success="right">Group Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">account_box</i>
-                    {{input id="gDesc" name="gDesc" class="validate" type="text" value=gDesc change=(action 'fetchGroupDescription')}}
+                    <i class="material-icons prefix">account_box</i> {{input id="gDesc" name="gDesc" class="validate" type="text" value=gDesc change=(action 'fetchGroupDescription')}}
                     <label for="description">Description</label>
                   </div>
                   <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">attach_money</i>
-                    {{input id="gAmount" name="gAmount" class="validate" type="text" value=gAmount change=(action 'fetchGroupAmont')}}
+                    <i class="material-icons prefix">attach_money</i> {{input id="gAmount" name="gAmount" class="validate" type="text" value=gAmount change=(action 'fetchGroupAmont')}}
                     <label for="currency">Amount</label>
                   </div>
                 </div>
@@ -90,7 +84,6 @@
                       <option value="2">Option 2</option>
                     </select>
                 </div>
-              </form>
             </div>
           </div>
           <div class="card-action right-align grey lighten-1">
@@ -101,3 +94,8 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(() => {
+    $('select').material_select();
+  });
+</script>

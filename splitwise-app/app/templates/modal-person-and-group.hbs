@@ -12,21 +12,18 @@
             <!-- ======================1.2: Form============================ -->
             <div class="row">
               <span class="card-title"><i class="material-icons">account_circle</i>Group Details:</span>
-              <br>
-              <form class="container">
-                <div class="input-field col s12">
+                <div class="input-field col s12 m10">
                   <i class="material-icons prefix">people</i> {{input id="gName" name="gName" class="validate" type="text" value=gName change=(action 'fetchGroupName')}}
                   <label class="active" for="first_name">Group Name</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field col s12 m10">
                   <i class="material-icons prefix">people</i>
                   <select multiple>
                     <option value="" disabled selected>Select</option>
-                    <option value="1">User 1</option> <!-- Dont forget to change values too-->
-                    <option value="2">User 2</option>
+                    <option value="1">Dev</option> <!-- Dont forget to change values too-->
+                    <option value="2">Sanika</option>
                   </select>
                 </div>
-              </form>
             </div>
           </div>
           <div class="card-action right-align grey lighten-1">
@@ -42,17 +39,15 @@
           <div class="card-content">
             <div class="row">
               <span class="card-title"><i class="material-icons">account_circle</i>Friend Details:</span>
-              <br>
-              <form class="container">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 m10">
                   <i class="material-icons prefix">person_add</i> {{input name="friendEmail" type="email" class="validate" value=friendEmail change=(action 'checkForFriendEmail')}}
                   <label class="active" for="r_mail">Email</label>
                 </div>
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 m10">
+                  <i class="material-icons prefix">person_add</i>
                   {{input name="appFriend" type="text" class="validate" value=appFriend change=(action 'checkForFriendName')}}
                   <label class="active" for="">Name</label>
                 </div>
-              </form>
             </div>
           </div>
           <div class="card-action right-align grey lighten-1">
@@ -64,3 +59,8 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(() => {
+    $('select').material_select();
+  });
+</script>

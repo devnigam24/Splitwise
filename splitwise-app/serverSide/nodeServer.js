@@ -77,12 +77,14 @@ app.get('/logout', function(req, res) {
 });
 
 app.get('/getUserInSession', function(req, res) {
+  console.log('getUserInSession'+JSON.stringify(userInSessionObject));
   res.send(userInSessionObject);
 });
 
 app.post('/setUserInSession', function(req, res) {
   client.get(host + "/allRegisteredUserObjects/" + req.body.userEmail, function(data) {
     userInSessionObject = data;
+    console.log('setUserInSession'+JSON.stringify(data));
     res.send(data);
   });
 });
@@ -174,7 +176,6 @@ app.post('/addBillIntoList', function(req, res) {
     'getBack': req.body.getBack,
     'id': userInSessionObject.firstName + '-' + req.body.description.replace(" ", "-")
   };
-  console.log(billObject);
   var args = {
     data: billObject,
     headers: {
@@ -189,7 +190,6 @@ app.post('/addBillIntoList', function(req, res) {
 
 function updateExpensecForThisFriend(friendsToBeUpdatedArray, valueToUpdate) {
   valueToUpdate = valueToUpdate / JSON.parse(friendsToBeUpdatedArray).length;
-  console.log(valueToUpdate);
   client.get(host + "/allRegisteredUserObjects/" + userInSessionObject.userEmail, function(data) {
     [].slice.call(friendsToBeUpdatedArray).forEach((oneFriend) => {
       [].slice.call(data.friends).forEach((obj) => {
@@ -220,7 +220,6 @@ function updateThisUserInDb(dataToUpdate) {
         "Content-Type": "application/json"
       }
     };
-    console.log(args);
     client.post(host + "/allRegisteredUserObjects", args, (data) => {
       console.log('new User Inserted');
       console.log('new' + JSON.stringify(data));

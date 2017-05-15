@@ -1,28 +1,46 @@
 {
   "allUsersEmailAndPwd": [
     {
-      "id": "q",
-      "q": "q"
+      "id": "Neha",
+      "Neha": "123"
     }
   ],
   "allRegisteredUserObjects": [
     {
-      "id": "q",
-      "firstName": "q",
-      "lastName": "q",
-      "userEmail": "q",
+      "id": "Neha",
+      "firstName": "Neha",
+      "lastName": "tambe",
+      "userEmail": "Neha",
       "friends": [
         {
-          "name": "a",
-          "emailId": "a",
-          "balance": "-115",
-          "id": "a"
+          "name": "Dev",
+          "emailId": "dev24@gmail.com",
+          "balance": "15",
+          "id": "dev24@gmail.com"
         },
         {
-          "name": "b",
-          "emailId": "b",
-          "balance": "-115",
-          "id": "b"
+          "name": "Maruti",
+          "emailId": "Maruti@gmail.com",
+          "balance": "15",
+          "id": "Maruti@gmail.com"
+        },
+        {
+          "name": "Anjali",
+          "emailId": "Anjali@gmail.com",
+          "balance": "15",
+          "id": "Anjali@gmail.com"
+        },
+        {
+          "name": "Sanika",
+          "emailId": "sanika@gmail.com",
+          "balance": "0",
+          "id": "sanika@gmail.com"
+        },
+        {
+          "name": "q",
+          "emailId": "q",
+          "balance": "-5",
+          "id": "q"
         }
       ],
       "groups": []
@@ -31,28 +49,28 @@
   "groups": [],
   "expenses": [
     {
-      "paidBy": "q",
-      "description": "15",
-      "amount": "15",
-      "paidInBetween": "[\"a\",\"b\"]",
-      "getBack": "10",
-      "id": "q-15"
+      "paidBy": "Neha",
+      "description": "Test Bill 1",
+      "amount": "10",
+      "paidInBetween": "[\"Dev\"]",
+      "getBack": "5",
+      "id": "Neha-Test-Bill 1"
     },
     {
-      "paidBy": "q",
-      "description": "300",
-      "amount": "300",
-      "paidInBetween": "[\"a\",\"b\"]",
-      "getBack": "200",
-      "id": "q-300"
-    },
-    {
-      "paidBy": "q",
-      "description": "45",
+      "paidBy": "Neha",
+      "description": "test Bill 2",
       "amount": "45",
-      "paidInBetween": "[\"a\",\"b\"]",
-      "getBack": "30",
-      "id": "q-45"
+      "paidInBetween": "[\"Dev\",\"Maruti\",\"Anjali\"]",
+      "getBack": "33.75",
+      "id": "Neha-test-Bill 2"
+    },
+    {
+      "paidBy": "Neha",
+      "description": "FireBase test",
+      "amount": "10",
+      "paidInBetween": "[\"q\"]",
+      "getBack": "5",
+      "id": "Neha-FireBase-test"
     }
   ]
 }
